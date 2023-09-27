@@ -1,0 +1,94 @@
+{
+  "menu": [
+    {
+        "url": "/",
+        "name": "Home",
+        "icon": "menu-icon tf-icons bx bx-home-circle",
+        "slug": ""
+    },
+    {
+        "name": "Usuarios",
+        "icon": "menu-icon tf-icons bx bxs-user-detail",
+        "slug": "usuario",
+        "submenu": [
+            {
+                "url": "/user/",
+                "name": "Usuarios",
+                "slug": "usuario"
+            },
+            {
+                "url": "/roles/",
+                "name": "Roles",
+                "slug": "usuario"
+            }
+        ]
+    },
+    {
+        "name": "Administración",
+        "icon": "menu-icon tf-icons bx bxs-buildings",
+        "slug": "administracion",
+        "submenu": [
+            {
+                "url": "/dependencia/",
+                "name": "Dependencias",
+                "slug": "dependencias-index"
+            },
+            {
+                "url": "/periodo/",
+                "name": "Periodos",
+                "slug": "periodo-index"
+            },
+            {
+                "url": "/unidad/",
+                "name": "Unidades de Medidas",
+                "slug": "unidadMedida-index"
+            }
+        ]
+    },
+    {
+        "name": "Programación",
+        "icon": "menu-icon tf-icons bx bxs-building",
+        "slug": "programacion",
+        "submenu": [
+            {
+                "url": "/hechos",
+                "name": "Hechos",
+                "slug": "programacion-hechos"
+            },
+            {
+                "url": "/politicas",
+                "name": "Politicas",
+                "slug": "programacion-politicas"
+            },
+            {
+                "url": "/estrategias",
+                "name": "Estrategias",
+                "slug": "programacion-estrategias"
+            },
+            {
+                "url": "/programas",
+                "name": "Programas",
+                "slug": "programacion-programas"
+            },
+            {
+                "url": "/metas",
+                "name": "Meta de producto",
+                "slug": "programacion-metas-productos"
+            }
+        ]
+    },
+    {
+        "url": "/proyectos",
+        "name": "Plan Operativo",
+        "icon": "menu-icon tf-icons bx bx-trip",
+        "slug": "plan_operativo"
+    },
+    {
+        "url": "/metas/ejecucion",
+        "name": "Ejecución",
+        "icon": "menu-icon tf-icons bx bx-calendar-check",
+        "slug": "ejecucion"
+    }
+  ]
+
+}

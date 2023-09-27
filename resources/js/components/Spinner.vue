@@ -1,0 +1,39 @@
+<template>
+    <div class="overlay">
+      <div class="custom-spinner">
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Cargando...</span>
+        </div>
+      </div>
+    </div>
+</template>
+
+<style scoped>
+/* Estilos para el overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Asegúrate de que el overlay esté por encima de otros elementos */
+}
+
+/* Estilos para el spinner */
+.custom-spinner {
+  width: 100px; /* Ajusta el ancho según sea necesario */
+  height: 100px; /* Ajusta la altura según sea necesario */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-spinner .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+</style>
