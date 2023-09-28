@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('valor');
             $table->string('acta_aprovacion')->nullable();
             $table->timestamps();
+            $table->foreign('proyecto_presupuesto_id')->references('id')->on('proyecto_presupuestos');
         });
     }
 

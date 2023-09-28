@@ -40,6 +40,13 @@ return new class extends Migration
             $table->float('recurso_year_4')->nullable();
             $table->float('recurso_cuatrienio')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('periodo_id')->references('id')->on('periodos');
+            $table->foreign('hecho_id')->references('id')->on('hechos');
+            $table->foreign('politica_id')->references('id')->on('politicas');
+            $table->foreign('estrategia_id')->references('id')->on('estrategias');
+            $table->foreign('programa_id')->references('id')->on('programas');
+            $table->foreign('indicador_id')->references('id')->on('indicadores');
         });
     }
 

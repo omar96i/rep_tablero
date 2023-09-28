@@ -27,6 +27,9 @@ return new class extends Migration
             $table->float('valor_registros')->default(0);
             $table->float('valor_pagos')->default(0);
             $table->timestamps();
+            $table->foreign('proyecto_id')->references('id')->on('proyectos');
+            $table->foreign('dependencia_id')->references('id')->on('dependencias');
+            $table->foreign('meta_producto_id')->references('id')->on('meta_de_productos');
         });
     }
 

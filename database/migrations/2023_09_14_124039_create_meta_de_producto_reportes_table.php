@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('meta_alcanzada');
             $table->text('actividad');
             $table->timestamps();
+            $table->foreign('meta_producto_id')->references('id')->on('meta_de_productos');
         });
     }
 

@@ -10,7 +10,6 @@
             <table class="table table-bordered table-periodo" width="100%" cellspacing="0" >
                 <thead>
                     <tr>
-                        <!-- <th>Periodo</th> -->
                         <th>Hecho</th>
                         <th>Politica</th>
                         <th>Programa</th>
@@ -25,15 +24,13 @@
                 </thead>
                 <tbody>
                     <tr v-for="(meta, index) in metas" :key="index">
-                        <!-- <td>{{ hecho.periodo }}</td> -->
                         <td>{{ meta.hecho?.nombre }}</td>
                         <td>{{ meta.politica?.nombre }}</td>
                         <td>{{ meta.programa?.nombre }}</td>
                         <td>{{ meta.codigo }}</td>
                         <td>{{ meta.nombre }}</td>
+                        <td>{{ meta.indicador_meta }}</td>
                         <td>{{ meta.indicador.nombre }}</td>
-                        <!-- <td>{{ meta.indicador }}</td> -->
-                        <td>{{ meta.indicador_id }}</td>
                         <td>{{ meta.peso }}</td>
                         <td>{{ meta.linea_base }}</td>
                         <td class="text-center d-flex">

@@ -14,7 +14,8 @@ class PermisosController extends Controller
     }
 
     public function get(){
-        return response()->json(['status' => true, 'permisos' => Permission::get()]);
+        $permisos = Permission::all();
+        return response()->json(['status' => true, 'permisos' => $permisos]);
     }
 
     public function getData(Permission $permisos){

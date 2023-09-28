@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->text('route_name');
             $table->timestamps();
+            $table->foreign('reporte_id')->references('id')->on('meta_de_producto_reportes');
         });
     }
 

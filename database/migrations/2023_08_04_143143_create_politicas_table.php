@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('peso');
             $table->text('descripcion');
             $table->timestamps();
+            $table->foreign('periodo_id')->references('id')->on('periodos');
+            $table->foreign('hecho_id')->references('id')->on('hechos');
         });
     }
 

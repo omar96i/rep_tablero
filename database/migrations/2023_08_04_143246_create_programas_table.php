@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('peso');
             $table->text('descripcion');
+            $table->foreign('periodo_id')->references('id')->on('periodos');
+            $table->foreign('hecho_id')->references('id')->on('hechos');
+            $table->foreign('politica_id')->references('id')->on('politicas');
+            $table->foreign('estrategia_id')->references('id')->on('estrategias');
             $table->timestamps();
         });
     }

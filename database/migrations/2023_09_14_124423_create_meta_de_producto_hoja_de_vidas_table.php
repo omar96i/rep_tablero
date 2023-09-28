@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('variables')->nullable();
             $table->text('observaciones')->nullable();
             $table->timestamps();
+            $table->foreign('meta_producto_id')->references('id')->on('meta_de_productos');
         });
     }
 

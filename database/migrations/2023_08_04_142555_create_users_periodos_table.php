@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('periodo_id');
-            // $table->string('tipo_acceso');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('periodo_id')->references('id')->on('periodos');
         });
     }
 
