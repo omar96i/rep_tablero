@@ -16,11 +16,11 @@
 </template>
 <script>
     import TableRolesVue from './TableRoles.vue'
-    import TablePermisosVue from './TablePermisos.vue'
+    // import TablePermisosVue from './TablePermisos.vue'
 
     export default{
         components: {
-            TablePermisosVue,
+            // TablePermisosVue,
             TableRolesVue
         },
         data(){
@@ -41,22 +41,6 @@
                 }
                 console.log(this.$refs.modal_form)
                 this.$refs.modal_form.setData(tipo, id)
-            },
-            getData(){
-                axios.get('/permisos/get').then(res=>{
-                    this.items = res.data.permission
-                    this.items = []
-                    res.data.permissions.forEach(permission => {
-                        this.items.push({
-                            id :permission.id,
-                            name: permission.name,
-                            guard_name: permission.guard_name
-
-                        })
-                    });
-                }).catch(res=>{
-                    console.log(res.response)
-                })
             },
 
             selectType(type){

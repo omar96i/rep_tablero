@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Permisos;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 
@@ -40,5 +39,4 @@ class PermisosController extends Controller
         $permisos->delete();
         return response()->json(['status' => true]);
     }
-
 }

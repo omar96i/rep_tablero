@@ -62,7 +62,7 @@ export default {
             return this.roles.permissions.find((objeto) => objeto.id === id);
         },
         getPermisos(){
-            axios.get(`/permisos/get`).then(res => {
+            axios.get(`/permisos/get-all`).then(res => {
                 // console.log("Datos de Roles", this.roles)
                 this.permisos = res.data.permisos;
             }).catch(res => {
