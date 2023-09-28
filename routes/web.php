@@ -8,8 +8,8 @@ use App\Http\Controllers\Metas\EvidenciasController;
 use App\Http\Controllers\Metas\HojaDeVidaController;
 use App\Http\Controllers\Metas\MetasController;
 use App\Http\Controllers\Metas\ReportesController;
-use App\Http\Controllers\Roles\RolesController;
 use App\Http\Controllers\Permisos\PermisosController;
+use App\Http\Controllers\Roles\RolesController;
 use App\Http\Controllers\Programacion\EstrategiaController;
 use App\Http\Controllers\Programacion\HechoController;
 use App\Http\Controllers\Programacion\PoliticaController;
@@ -108,9 +108,9 @@ Route::middleware(['auth'])->group(function () {
     });
     //Permisos
     Route::prefix('permisos')->controller(PermisosController::class)->group(function () {
+        Route::get('/get-all', 'get')->name('permisos.get');
         Route::get('/', 'index')->name('permisos.index');
         Route::post('/store', 'store')->name('permisos.store');
-        Route::get('/get', 'get')->name('permisos.get');
         Route::get('/delete/{permisos}', 'delete')->name('permisos.delete');
         Route::post('/update/{permisos}', 'update')->name('permisos.update');
         Route::get('/getData/{permisos}', 'getData')->name('permisos.get.data');

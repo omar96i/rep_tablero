@@ -71,7 +71,7 @@
                 this.$refs.modal_form_permission.setData(tipo,id)
             },
             getData(){
-                axios.get('/permisos/get').then(res=>{
+                axios.get('/permisos/get-all').then(res=>{
                     this.permisos = res.data.permisos
                     this.load=true
                     this.loading=true
