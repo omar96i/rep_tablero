@@ -107,15 +107,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/getData/{roles}', 'getData')->name('roles.get.data');
     });
     //Permisos
-    Route::prefix('permisos')->controller(PermisosController::class)->group(function () {
-        Route::get('/get-all', 'get')->name('permisos.get');
-        Route::get('/', 'index')->name('permisos.index');
-        Route::post('/store', 'store')->name('permisos.store');
-        Route::get('/delete/{permisos}', 'delete')->name('permisos.delete');
-        Route::post('/update/{permisos}', 'update')->name('permisos.update');
-        Route::get('/getData/{permisos}', 'getData')->name('permisos.get.data');
+    Route::prefix('permisos')->group(function () {
+        Route::get('/get-all', [PermisosController::class, 'get'])->name('permisos.get');
+        Route::get('/', [PermisosController::class, 'index'])->name('permisos.index');
+        Route::post('/store', [PermisosController::class, 'store'])->name('permisos.store');
+        Route::get('/delete/{permisos}', [PermisosController::class, 'delete'])->name('permisos.delete');
+        Route::post('/update/{permisos}', [PermisosController::class, 'update'])->name('permisos.update');
+        Route::get('/getData/{permisos}', [PermisosController::class, 'getData'])->name('permisos.get.data');
     });
-
     // metas
     Route::prefix('metas')->group(function () {
         Route::get('/', [MetasController::class, 'index'])->name('metas.index');
