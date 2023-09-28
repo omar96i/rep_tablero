@@ -30,7 +30,7 @@
             @csrf
             <div class="mb-3">
               <label for="usuario" class="form-label">Nombre de usuario</label>
-              <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu correo" autofocus>
+              <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu usuario" autofocus>
             </div>
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">
