@@ -42,7 +42,7 @@
                         <div class="row mb-3 align-items-center">
                             <label for="input_valor" class="col-sm-4 col-form-label"><b>Valor {{ column }}$:</b></label>
                             <div class="col-sm-8">
-                            <input type="number" class="form-control" id="input_valor" @input="inputFormatoMoneda" v-model="presupuesto[`${column}`]">
+                                <input type="text" class="form-control" id="input_valor" @input="inputFormatoMoneda" v-model="presupuesto[`${column}`]">
                             </div>
                         </div>
                         <div class="text-center my-2 mt-auto">
@@ -76,11 +76,11 @@ export default {
     methods: {
         inputFormatoMoneda(event){
             const valor = event.target.value;
-            this.FormatoMoneda(valor)
+            this.presupuesto[`${this.column}`] = this.FormatoMoneda(valor)
         },
         FormatoMoneda(valor) {
             // Eliminar todos los caracteres no numéricos, excepto comas y puntos
-            const valorLimpio = valor.replace(/[^0-9,.]/g, '');
+            const valorLimpio = valor.toString().replace(/[^0-9,.]/g, '');
 
             // Reemplazar comas y puntos por vacío para obtener solo los dígitos
             const valorSoloDigitos = valorLimpio.replace(/[,.]/g, '');
@@ -88,15 +88,15 @@ export default {
             // Formatear el número con separadores de miles
             const valorFormateado = valorSoloDigitos.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-            this.presupuesto[`${column}`] = valorFormateado;
+            return valorFormateado;
         },
         removeFormatoMoneda(valor) {
-            const valor_clean = valor.replace(/,/g, ''); // Eliminar comas
-            this.presupuesto[`${column}`] = parseInt(valor_clean); // Convertir a entero
+            const valor_clean = valor.toString().replace(/,/g, ''); // Eliminar comas
+            return parseInt(valor_clean); // Convertir a entero
         },
         getPresupuesto(){
             axios.get(`/get-presupuesto/${this.presupuesto_id}`).then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.status) {
                     this.presupuesto = res.data.presupuesto
                     this.ult_ejecutado = this.presupuesto[`${this.column}`]
@@ -106,6 +106,7 @@ export default {
             })
         },
         saveColumn(){
+            let valor_registros = this.removeFormatoMoneda(this.presupuesto[`${this.column}`])
             let val_max = 0
             if (this.column == 'disponibilidad') {
                 val_max = this.presupuesto.definitivo
@@ -114,12 +115,13 @@ export default {
             }else if(this.column == 'pagos'){
                 val_max = this.presupuesto.registros
             }
-            if (this.presupuesto[`${this.column}`] > val_max) {
-                this.$swalMini('error', `El valor de ${this.column}  supera ${val_max}!`);
+            if (valor_registros > val_max) {
+                console.log(val_max);
+                this.$swalMini('error', `El valor de ${this.column}  supera ${this.FormatoMoneda(val_max)} disponible!`);
             }else{
-                removeFormatoMoneda(this.presupuesto[`${this.column}`])
+                this.presupuesto[`${this.column}`] = this.removeFormatoMoneda(this.presupuesto[`${this.column}`])
                 axios.put(`/proyecto-presupuestos/${this.presupuesto.id}`, this.presupuesto).then(res=>{
-                    console.log(res)
+                    // console.log(res)
                     if (res.data.status) {
                         this.$swalMini('success', `${this.column} actualizada con exito!`);
                         this.$parent.closeModal('modalAdd')

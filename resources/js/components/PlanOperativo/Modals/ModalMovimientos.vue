@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="mb-2">
                                     <label>Valor a ingresar $:</label>
-                                    <input class="form-control" type="number" v-model="form_movimiento.valor">
+                                    <input class="form-control" type="text" @input="inputFormatoMoneda" v-model="form_movimiento.valor">
                                     <!--poner formato moneda -->
                                 </div>
                                 <div class="mb-2">
@@ -103,6 +103,26 @@ export default {
         this.getPresupuesto()
     },
     methods: {
+        inputFormatoMoneda(event){
+            const valor = event.target.value;
+            this.form_movimiento.valor = this.formatoMoneda(valor)
+        },
+        formatoMoneda(valor) {
+            // Eliminar todos los caracteres no numéricos, excepto comas y puntos
+            const valorLimpio = valor.toString().replace(/[^0-9,.]/g, '');
+
+            // Reemplazar comas y puntos por vacío para obtener solo los dígitos
+            const valorSoloDigitos = valorLimpio.replace(/[,.]/g, '');
+
+            // Formatear el número con separadores de miles
+            const valorFormateado = valorSoloDigitos.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            return valorFormateado;
+        },
+        removeFormatoMoneda(valor) {
+            const valor_clean = valor.toString().replace(/,/g, ''); // Convertir a cadena y eliminar comas
+            return parseInt(valor_clean, 10); // Convertir a entero
+        },
         getPresupuesto() {
             axios.get(`/get-presupuesto/${this.presupuesto_id}`).then(res => {
                 console.log(res.data);
@@ -115,6 +135,7 @@ export default {
         },
         saveMovimiento() {
             this.form_movimiento.proyecto_presupuesto_id = this.presupuesto_id
+            this.form_movimiento.valor = this.removeFormatoMoneda(this.form_movimiento.valor)
             axios.post('/proyectos-movimientos', this.form_movimiento).then(res => {
                 if (res.data.status) {
                     this.$swalMini('success', `${res.data.message}`);

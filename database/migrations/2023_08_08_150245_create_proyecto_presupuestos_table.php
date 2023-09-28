@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('definitivo', 15,2)->default(0);
             $table->float('disponibilidad', 15,2)->default(0);
             $table->float('registros', 15,2)->default(0);
-            $table->float('pagos')->default(0);
+            $table->float('pagos', 15,2)->default(0);
             $table->timestamps();
             $table->foreign('proyecto_id')->references('id')->on('proyectos');
         });
