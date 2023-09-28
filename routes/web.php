@@ -8,7 +8,7 @@ use App\Http\Controllers\Metas\EvidenciasController;
 use App\Http\Controllers\Metas\HojaDeVidaController;
 use App\Http\Controllers\Metas\MetasController;
 use App\Http\Controllers\Metas\ReportesController;
-use App\Http\Controllers\Permisos\PermisosController;
+use App\Http\Controllers\Permiso\PermisoController;
 use App\Http\Controllers\Roles\RolesController;
 use App\Http\Controllers\Programacion\EstrategiaController;
 use App\Http\Controllers\Programacion\HechoController;
@@ -108,12 +108,12 @@ Route::middleware(['auth'])->group(function () {
     });
     //Permisos
     Route::prefix('permisos')->group(function () {
-        Route::get('/get-all', [PermisosController::class, 'get'])->name('permisos.get');
-        Route::get('/', [PermisosController::class, 'index'])->name('permisos.index');
-        Route::post('/store', [PermisosController::class, 'store'])->name('permisos.store');
-        Route::get('/delete/{permisos}', [PermisosController::class, 'delete'])->name('permisos.delete');
-        Route::post('/update/{permisos}', [PermisosController::class, 'update'])->name('permisos.update');
-        Route::get('/getData/{permisos}', [PermisosController::class, 'getData'])->name('permisos.get.data');
+        Route::get('/get-all', [PermisoController::class, 'get'])->name('permisos.get');
+        Route::get('/', [PermisoController::class, 'index'])->name('permisos.index');
+        Route::post('/store', [PermisoController::class, 'store'])->name('permisos.store');
+        Route::get('/delete/{permisos}', [PermisoController::class, 'delete'])->name('permisos.delete');
+        Route::post('/update/{permisos}', [PermisoController::class, 'update'])->name('permisos.update');
+        Route::get('/getData/{permisos}', [PermisoController::class, 'getData'])->name('permisos.get.data');
     });
     // metas
     Route::prefix('metas')->group(function () {
