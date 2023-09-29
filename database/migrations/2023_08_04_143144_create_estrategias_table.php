@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('periodo_id')->nullable();
             $table->unsignedBigInteger('hecho_id')->nullable();
             $table->unsignedBigInteger('politica_id')->nullable();
-            $table->string('nombre')->nullable();
+            $table->text('nombre')->nullable();
             $table->string('peso')->nullable();
             $table->text('descripcion')->nullable();
             $table->timestamps();

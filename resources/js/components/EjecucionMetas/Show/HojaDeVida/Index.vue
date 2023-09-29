@@ -31,7 +31,15 @@
                     <div class="col-12 col-sm-6">
                         <div class="mb-3">
                             <label for="periocidad" class="form-label">Periocidad:</label>
-                            <input v-model="hoja_vida.periocidad" type="text" class="form-control" id="periocidad">
+                            <select class="form-select" name="periocidad" id="periocidad"
+                                v-model="hoja_vida.periocidad">
+                                <option value="" selected disabled>Selecciona..</option>
+                                <option value="mensual">Mensual</option>
+                                <option value="bimestral">Bimestral</option>
+                                <option value="trimestral">Trimestral</option>
+                                <option value="semestral">Semestral</option>
+                                <option value="anual">Anual</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -53,8 +61,14 @@
                     </div>
                     <div class="col-12 col-sm-6">
                         <label for="valoracion" class="form-label">Valoracion:</label>
-                        <textarea rows="3" v-model="hoja_vida.valoracion" type="text" class="form-control"
-                            id="valoracion"></textarea>
+                        <select class="form-select" name="valoracion" id="valoracion"
+                            v-model="hoja_vida.valoracion">
+                            <option value="" selected disabled>Selecciona..</option>
+                            <option value="deseada">Deseada</option>
+                            <option value="favorable">Favorable</option>
+                            <option value="regular">Regular</option>
+                            <option value="insatisfactorio">Insatisfactorio</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-3">
