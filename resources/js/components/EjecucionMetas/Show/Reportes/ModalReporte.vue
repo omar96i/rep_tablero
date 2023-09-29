@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="fecha_reporte" class="form-label">Fecha del reporte</label>
-                                <input v-model="reporte.fecha_reporte" type="date" class="form-control" id="fecha_reporte" required disabled>
+                                <input v-model="reporte.fecha_reporte" type="date" class="form-control" id="fecha_reporte" required>
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="meta_año" class="form-label">Meta Año</label>
