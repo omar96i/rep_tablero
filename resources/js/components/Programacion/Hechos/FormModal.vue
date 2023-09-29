@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <form @submit.prevent="saveProduct">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalFullTitle">Crear un nuevo Hecho:</h5>
+                        <h5 class="modal-title" id="modalFullTitle">{{ !hecho.id ?  'Crear Nueva ' : 'Editar ' }} Hecho:</h5>
                         <button type="button" class="btn-close" @click="$parent.closeFormModal()"
                         ></button>
                     </div>

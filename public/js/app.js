@@ -22361,22 +22361,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this;
       axios.get('/hechos-get').then(function (res) {
         var _console;
-        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("332304306_0", res)));
+        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("4104893084_0", res)));
         _this.hechos = res.data.hechos;
       })["catch"](function (error) {
         var _console2;
-        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("332304306_1", error)));
+        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("4104893084_1", error)));
       });
     },
     getPoliticas: function getPoliticas() {
       var _this2 = this;
       axios.get('/politicas-get').then(function (res) {
         var _console3;
-        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("332304306_2", res)));
+        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("4104893084_2", res)));
         _this2.politicas = res.data.politicas;
       })["catch"](function (error) {
         var _console4;
-        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("332304306_3", error)));
+        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("4104893084_3", error)));
       });
     },
     saveProduct: function saveProduct() {
@@ -22384,26 +22384,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (this.estrategia.id) {
         axios.put("/estrategias/".concat(this.estrategia.id), this.estrategia).then(function (res) {
           var _console5;
-          /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("332304306_4", res)));
+          /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("4104893084_4", res)));
           if (res.data.status) {
             _this3.$swalMini('success', "".concat(res.data.message, "."));
             _this3.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console6;
-          /* eslint-disable */(_console6 = console).log.apply(_console6, _toConsumableArray(oo_oo("332304306_5", error.response)));
+          /* eslint-disable */(_console6 = console).log.apply(_console6, _toConsumableArray(oo_oo("4104893084_5", error.response)));
         });
       } else {
         axios.post('/estrategias', this.estrategia).then(function (res) {
           var _console7;
-          /* eslint-disable */(_console7 = console).log.apply(_console7, _toConsumableArray(oo_oo("332304306_6", res)));
+          /* eslint-disable */(_console7 = console).log.apply(_console7, _toConsumableArray(oo_oo("4104893084_6", res)));
           if (res.data.status) {
             _this3.$swalMini('success', "".concat(res.data.message, "."));
             _this3.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console8;
-          /* eslint-disable */(_console8 = console).log.apply(_console8, _toConsumableArray(oo_oo("332304306_7", error.response)));
+          /* eslint-disable */(_console8 = console).log.apply(_console8, _toConsumableArray(oo_oo("4104893084_7", error.response)));
         });
       }
     }
@@ -22621,26 +22621,26 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (this.hecho.id) {
         axios.put("/hechos/".concat(this.hecho.id), this.hecho).then(function (res) {
           var _console;
-          /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2106845045_0", res)));
+          /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2350777726_0", res)));
           if (res.data.status) {
             _this.$swalMini('success', "".concat(res.data.message, "."));
             _this.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console2;
-          /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2106845045_1", error.response)));
+          /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2350777726_1", error.response)));
         });
       } else {
         axios.post('/hechos', this.hecho).then(function (res) {
           var _console3;
-          /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2106845045_2", res)));
+          /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2350777726_2", res)));
           if (res.data.status) {
             _this.$swalMini('success', "".concat(res.data.message, "."));
             _this.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console4;
-          /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2106845045_3", error.response)));
+          /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2350777726_3", error.response)));
         });
       }
     }
@@ -22866,66 +22866,66 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.hechos = res.data.hechos;
       })["catch"](function (error) {
         var _console;
-        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2260343571_0", error)));
+        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2521224459_0", error)));
       });
       axios.get('/politicas-get').then(function (res) {
         var _console2;
-        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2260343571_1", res)));
+        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2521224459_1", res)));
         _this.politicas = res.data.politicas;
       })["catch"](function (error) {
         var _console3;
-        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2260343571_2", error)));
+        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2521224459_2", error)));
       });
       axios.get('/estrategias-get').then(function (res) {
         var _console4;
-        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2260343571_3", res)));
+        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2521224459_3", res)));
         _this.estrategias = res.data.estrategias;
       })["catch"](function (error) {
         var _console5;
-        /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("2260343571_4", error)));
+        /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("2521224459_4", error)));
       });
       axios.get('/programas-get').then(function (res) {
         _this.programas = res.data.programas;
       })["catch"](function (error) {
         var _console6;
-        /* eslint-disable */(_console6 = console).log.apply(_console6, _toConsumableArray(oo_oo("2260343571_5", error)));
+        /* eslint-disable */(_console6 = console).log.apply(_console6, _toConsumableArray(oo_oo("2521224459_5", error)));
       });
       axios.get('/metas/indicadores').then(function (res) {
         var _console7;
-        /* eslint-disable */(_console7 = console).log.apply(_console7, _toConsumableArray(oo_oo("2260343571_6", res)));
+        /* eslint-disable */(_console7 = console).log.apply(_console7, _toConsumableArray(oo_oo("2521224459_6", res)));
         _this.indicadores = res.data.indicadores;
       })["catch"](function (error) {
         var _console8;
-        /* eslint-disable */(_console8 = console).log.apply(_console8, _toConsumableArray(oo_oo("2260343571_7", error)));
+        /* eslint-disable */(_console8 = console).log.apply(_console8, _toConsumableArray(oo_oo("2521224459_7", error)));
       });
     },
     saveProduct: function saveProduct() {
       var _this2 = this;
       if (this.meta.id) {
         var _console9;
-        /* eslint-disable */(_console9 = console).log.apply(_console9, _toConsumableArray(oo_oo("2260343571_8", this.meta)));
+        /* eslint-disable */(_console9 = console).log.apply(_console9, _toConsumableArray(oo_oo("2521224459_8", this.meta)));
         axios.put("/metas/".concat(this.meta.id), this.meta).then(function (res) {
           var _console10;
-          /* eslint-disable */(_console10 = console).log.apply(_console10, _toConsumableArray(oo_oo("2260343571_9", res)));
+          /* eslint-disable */(_console10 = console).log.apply(_console10, _toConsumableArray(oo_oo("2521224459_9", res)));
           if (res.data.status) {
             _this2.$swalMini('success', "".concat(res.data.message, "."));
             _this2.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console11;
-          /* eslint-disable */(_console11 = console).log.apply(_console11, _toConsumableArray(oo_oo("2260343571_10", error.response)));
+          /* eslint-disable */(_console11 = console).log.apply(_console11, _toConsumableArray(oo_oo("2521224459_10", error.response)));
         });
       } else {
         axios.post('/metas', this.meta).then(function (res) {
           var _console12;
-          /* eslint-disable */(_console12 = console).log.apply(_console12, _toConsumableArray(oo_oo("2260343571_11", res)));
+          /* eslint-disable */(_console12 = console).log.apply(_console12, _toConsumableArray(oo_oo("2521224459_11", res)));
           if (res.data.status) {
             _this2.$swalMini('success', "".concat(res.data.message, "."));
             _this2.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console13;
-          /* eslint-disable */(_console13 = console).log.apply(_console13, _toConsumableArray(oo_oo("2260343571_12", error.response)));
+          /* eslint-disable */(_console13 = console).log.apply(_console13, _toConsumableArray(oo_oo("2521224459_12", error.response)));
         });
       }
     },
@@ -23182,11 +23182,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this;
       axios.get('/hechos-get').then(function (res) {
         var _console;
-        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2537347630_0", res)));
+        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("1101729371_0", res)));
         _this.hechos = res.data.hechos;
       })["catch"](function (error) {
         var _console2;
-        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2537347630_1", error)));
+        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("1101729371_1", error)));
       });
     },
     saveProduct: function saveProduct() {
@@ -23194,19 +23194,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (this.politica.id) {
         axios.put("/politicas/".concat(this.politica.id), this.politica).then(function (res) {
           var _console3;
-          /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2537347630_2", res)));
+          /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("1101729371_2", res)));
           if (res.data.status) {
             _this2.$swalMini('success', "".concat(res.data.message, "."));
             _this2.$parent.closeFormModal();
           }
         })["catch"](function (error) {
           var _console4;
-          /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2537347630_3", error.response)));
+          /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("1101729371_3", error.response)));
         });
       } else {
         axios.post('/politicas', this.politica).then(function (res) {
           var _console5;
-          /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("2537347630_4", res)));
+          /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("1101729371_4", res)));
           if (res.data.status) {
             _this2.$swalMini('success', "".concat(res.data.message, "."));
             _this2.$parent.closeFormModal();
@@ -23215,7 +23215,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           var _console6;
           _this2.$swalMini('error', "Se ha producido un error al realizar la acci\xF3n.");
           /* eslint-disable */
-          (_console6 = console).log.apply(_console6, _toConsumableArray(oo_oo("2537347630_5", error.response)));
+          (_console6 = console).log.apply(_console6, _toConsumableArray(oo_oo("1101729371_5", error.response)));
         });
       }
     }
@@ -23444,7 +23444,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.hechos = res.data.hechos;
       })["catch"](function (error) {
         var _console;
-        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2669683714_0", error)));
+        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("567443867_0", error)));
       });
     },
     getPoliticas: function getPoliticas() {
@@ -23454,7 +23454,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this2.politicas = res.data.politicas;
       })["catch"](function (error) {
         var _console2;
-        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2669683714_1", error)));
+        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("567443867_1", error)));
       });
     },
     getEstrategias: function getEstrategias() {
@@ -23464,7 +23464,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this3.estrategias = res.data.estrategias;
       })["catch"](function (error) {
         var _console3;
-        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2669683714_2", error)));
+        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("567443867_2", error)));
       });
     },
     saveProduct: function saveProduct() {
@@ -23478,7 +23478,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }
         })["catch"](function (error) {
           var _console4;
-          /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2669683714_3", error.response)));
+          /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("567443867_3", error.response)));
         });
       } else {
         axios.post('/programas', this.programa).then(function (res) {
@@ -23489,7 +23489,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           }
         })["catch"](function (error) {
           var _console5;
-          /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("2669683714_4", error.response)));
+          /* eslint-disable */(_console5 = console).log.apply(_console5, _toConsumableArray(oo_oo("567443867_4", error.response)));
         });
       }
     },
@@ -27857,10 +27857,10 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "modal-header"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+var _hoisted_5 = {
   "class": "modal-title",
   id: "modalFullTitle"
-}, "Crear un nuevo Estrategia:", -1 /* HOISTED */);
+};
 var _hoisted_6 = {
   "class": "modal-body py-0"
 };
@@ -27938,7 +27938,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.saveProduct && $options.saveProduct.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(!$data.estrategia.id ? 'Crear Nueva ' : 'Editar ') + " Estrategia:", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -28110,10 +28110,10 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "modal-header"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+var _hoisted_5 = {
   "class": "modal-title",
   id: "modalFullTitle"
-}, "Crear un nuevo Hecho:", -1 /* HOISTED */);
+};
 var _hoisted_6 = {
   "class": "modal-body py-0"
 };
@@ -28162,7 +28162,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.saveProduct && $options.saveProduct.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(!$data.hecho.id ? 'Crear Nueva ' : 'Editar ') + " Hecho:", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -28309,10 +28309,10 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "modal-header"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+var _hoisted_5 = {
   "class": "modal-title",
   id: "modalFullTitle"
-}, "Crear una nueva Meta:", -1 /* HOISTED */);
+};
 var _hoisted_6 = {
   "class": "modal-body py-0"
 };
@@ -28584,7 +28584,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[28] || (_cache[28] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.saveProduct && $options.saveProduct.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(!$data.meta.id ? 'Crear Nueva ' : 'Editar ') + " Meta:", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -28940,10 +28940,10 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "modal-header"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+var _hoisted_5 = {
   "class": "modal-title",
   id: "modalFullTitle"
-}, "Crear un nuevo Politica:", -1 /* HOISTED */);
+};
 var _hoisted_6 = {
   "class": "modal-body py-0"
 };
@@ -29003,7 +29003,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.saveProduct && $options.saveProduct.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(!$data.politica.id ? 'Crear Nueva ' : 'Editar ') + " Politica:", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
     onClick: _cache[0] || (_cache[0] = function ($event) {
@@ -29160,10 +29160,10 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "modal-header"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+var _hoisted_5 = {
   "class": "modal-title",
   id: "modalFullTitle"
-}, "Crear un nuevo programa:", -1 /* HOISTED */);
+};
 var _hoisted_6 = {
   "class": "modal-body py-0"
 };
@@ -29251,7 +29251,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[10] || (_cache[10] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.saveProduct && $options.saveProduct.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(!$data.programa.id ? 'Crear Nueva ' : 'Editar ') + " programa:", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn-close",
     onClick: _cache[0] || (_cache[0] = function ($event) {

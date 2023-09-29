@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <form @submit.prevent="saveProduct">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalFullTitle">Crear un nuevo Politica:</h5>
+                        <h5 class="modal-title" id="modalFullTitle">{{ !politica.id ?  'Crear Nueva ' : 'Editar ' }} Politica:</h5>
                         <button type="button" class="btn-close" @click="$parent.closeFormModal()"
                         ></button>
                     </div>

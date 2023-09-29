@@ -29,7 +29,7 @@ class Estrategia extends Model
     }
 
     public function politica(){
-        return $this->belongsTo(Politica::class, 'periodo_id');
+        return $this->belongsTo(Politica::class, 'politica_id');
     }
 
     public function programas(){

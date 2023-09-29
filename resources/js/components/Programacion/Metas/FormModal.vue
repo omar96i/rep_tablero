@@ -5,7 +5,7 @@
             <div class="modal-content ">
                 <form @submit.prevent="saveProduct">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalFullTitle">Crear una nueva Meta:</h5>
+                        <h5 class="modal-title" id="modalFullTitle">{{ !meta.id ?  'Crear Nueva ' : 'Editar ' }} Meta:</h5>
                         <button type="button" class="btn-close" @click="$parent.closeFormModal()"
                         ></button>
                     </div>
