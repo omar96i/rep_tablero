@@ -30,7 +30,7 @@
                         <td>{{ meta.codigo }}</td>
                         <td>{{ meta.nombre }}</td>
                         <td>{{ meta.indicador_meta }}</td>
-                        <td>{{ meta.indicador.nombre }}</td>
+                        <td>{{ meta.indicador?.nombre }}</td>
                         <td>{{ meta.peso }}</td>
                         <td>{{ meta.linea_base }}</td>
                         <td class="text-center d-flex">
@@ -129,6 +129,7 @@ export default{
         },
         deleteData(id){
             axios.delete(`/metas/${id}`).then(res=>{
+                console.log(res);
                 if(res.data.status){
                      this.$swalMini('success', `${res.data.message}.`)
                     this.getData()

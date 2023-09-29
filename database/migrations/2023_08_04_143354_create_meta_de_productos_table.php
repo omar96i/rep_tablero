@@ -34,11 +34,11 @@ return new class extends Migration
             $table->float('meta_year_3')->nullable();
             $table->float('meta_year_4')->nullable();
             $table->float('meta_cuatrienio')->nullable();
-            $table->float('recurso_year_1')->nullable();
-            $table->float('recurso_year_2')->nullable();
-            $table->float('recurso_year_3')->nullable();
-            $table->float('recurso_year_4')->nullable();
-            $table->float('recurso_cuatrienio')->nullable();
+            $table->float('recurso_year_1', 15,2)->nullable();
+            $table->float('recurso_year_2', 15,2)->nullable();
+            $table->float('recurso_year_3', 15,2)->nullable();
+            $table->float('recurso_year_4', 15,2)->nullable();
+            $table->float('recurso_cuatrienio', 15,2)->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('periodo_id')->references('id')->on('periodos');
