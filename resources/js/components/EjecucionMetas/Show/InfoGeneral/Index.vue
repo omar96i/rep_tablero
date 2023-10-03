@@ -39,7 +39,7 @@
                     <thead>
                         <tr class="table-primary">
                             <th>Año</th>
-                            <!-- <th>Meta Programada</th> -->
+                            <th>Meta Programada</th>
                             <th>Meta Alcanzada</th>
                             <th>Porcentaje de ejcución</th>
                         </tr>
@@ -47,7 +47,7 @@
                     <tbody>
                         <tr v-for="(item, index) in meta.programacion_meta" :key="index">
                             <td>{{ item.year }}</td>
-                            <!-- <td>{{ item.meta_programada }}</td> -->
+                            <td>{{ item.meta_programada }}</td>
                             <td>{{ item.meta_alcanzada }}</td>
                             <td>{{ item.porcentaje_avance }} %</td>
                         </tr>

@@ -14,6 +14,7 @@ class MetaDeProductosGrafica extends Model
         'year',
         'meta_programada',
         'meta_alcanzada',
+        'porcentaje_avance',
     ];
  
     public function meta(){

@@ -138,7 +138,7 @@ class MetaDeProducto extends Model
 
             if ($filteredReportes->isEmpty()) {
                 // Si no se encontraron objetos que cumplan la condición, devolver algo por defecto
-                return (object)['meta_producto_id' => $meta->id, 'year' => $year, 'meta_programada' => $meta_programada, 'meta_alcanzada' => 0];
+                return (object)['meta_producto_id' => $meta->id, 'year' => $year, 'meta_programada' => $meta_programada, 'meta_alcanzada' => 0, 'porcentaje_avance' => 0];
             }
 
             return $filteredReportes->first(); // Devolver el primer objeto que cumple la condición

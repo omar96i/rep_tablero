@@ -35,7 +35,8 @@ class ReportesController extends Controller
                 ['meta_producto_id' => $programacion_meta->meta_producto_id, 'year' => $programacion_meta->year],
                 [
                     'meta_programada'=> $programacion_meta->meta_programada,
-                    'meta_alcanzada'=> $programacion_meta->meta_alcanzada
+                    'meta_alcanzada'=> $programacion_meta->meta_alcanzada,
+                    'porcentaje_avance'=> $programacion_meta->porcentaje_avance
                 ]
             );
         }
