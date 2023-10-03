@@ -39,7 +39,7 @@
                                                 :key="index">
                                                 <div class="card">
                                                     <h5 class="card-header text-white bg-primary p-2">Avance Meta {{
-                                                        reporte.año }}</h5>
+                                                        reporte.year }}</h5>
                                                     <div class="card-body border border-secondary rounded-bottom">
                                                         <p class="my-1"><b>Meta Programada: </b> {{ reporte.meta_programada
                                                         }}</p>
@@ -48,7 +48,7 @@
                                                         <div
                                                             class="d-flex justify-content-between align-items-center gap-3">
                                                             <div class="progress w-100" style="height:10px;">
-                                                                <div :class="reporte.porcentaje_avance < 50 ? 'bg-danger' : reporte.porcentaje_avance > 50 ? 'bg-success' : 'bg-warning', 'progress-bar'"
+                                                                <div :class="{'bg-danger': reporte.porcentaje_avance < 50, 'bg-success': reporte.porcentaje_avance > 50, 'bg-warning': reporte.porcentaje_avance === 50, 'progress-bar': true}"
                                                                     role="progressbar"
                                                                     :style="{ width: reporte.porcentaje_avance + '%' }"
                                                                     :aria-valuenow="reporte.porcentaje_avance"

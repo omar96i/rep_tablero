@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use stdClass;
 
 class MetaDeProducto extends Model
 {
@@ -67,6 +68,11 @@ class MetaDeProducto extends Model
         return $this->belongsTo(Indicador::class, 'indicador_id');
     }
 
+    public function graficas()
+    {
+        return $this->belongsTo(MetaDeProductosGrafica::class, 'meta_producto_id');
+    }
+
     public function hoja_de_vida()
     {
         return $this->hasOne(MetaDeProductoHojaDeVida::class, 'meta_producto_id');
@@ -115,14 +121,16 @@ class MetaDeProducto extends Model
                 $meta_programada = $meta->{$prop};
             }
 
-            $filteredReportes = $meta->reportes->map(function ($reporte) use ($year, &$meta_programada) {
+            $filteredReportes = $meta->reportes->map(function ($reporte) use ($year, $meta, &$meta_programada) {
                 $reporte_calculado = [];
 
                 if (intval($reporte->meta_año) == $year && $meta_programada != 0) {
-                    $reporte_calculado['año'] = $year;
-                    $reporte_calculado['meta_programada'] = $meta_programada;
-                    $reporte_calculado['meta_alcanzada'] = $reporte->meta_alcanzada;
-                    $reporte_calculado['porcentaje_avance'] = ($reporte->meta_alcanzada * 100) / $meta_programada;
+                    $reporte_calculado = new stdClass();
+                    $reporte_calculado->meta_producto_id = $meta->id;
+                    $reporte_calculado->year = $year;
+                    $reporte_calculado->meta_programada = $meta_programada;
+                    $reporte_calculado->meta_alcanzada = $reporte->meta_alcanzada;
+                    $reporte_calculado->porcentaje_avance = ($reporte->meta_alcanzada * 100) / $meta_programada;
                 }
 
                 return empty($reporte_calculado) ? null : $reporte_calculado;
@@ -130,7 +138,7 @@ class MetaDeProducto extends Model
 
             if ($filteredReportes->isEmpty()) {
                 // Si no se encontraron objetos que cumplan la condición, devolver algo por defecto
-                return (object)['año' => $year, 'meta_programada' => $meta_programada, 'meta_alcanzada' => 0, 'porcentaje_avance' => 0];
+                return (object)['meta_producto_id' => $meta->id, 'year' => $year, 'meta_programada' => $meta_programada, 'meta_alcanzada' => 0];
             }
 
             return $filteredReportes->first(); // Devolver el primer objeto que cumple la condición

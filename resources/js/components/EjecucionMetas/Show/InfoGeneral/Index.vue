@@ -46,7 +46,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in meta.programacion_meta" :key="index">
-                            <td>{{ item.año }}</td>
+                            <td>{{ item.year }}</td>
                             <!-- <td>{{ item.meta_programada }}</td> -->
                             <td>{{ item.meta_alcanzada }}</td>
                             <td>{{ item.porcentaje_avance }} %</td>

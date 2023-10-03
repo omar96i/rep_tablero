@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Metas;
 use App\Http\Controllers\Controller;
 use App\Models\MetaDeProducto;
 use App\Models\MetaDeProductoReporte;
+use App\Models\MetaDeProductosGrafica;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 
@@ -20,21 +21,6 @@ class ReportesController extends Controller
         $meta->load('indicador', 'proyectos.proyecto', 'hoja_de_vida');
         // listar los 4 reportes de cada año
         $meta->programacion_meta = $meta->avanceFisico();
-        // if ($meta->indicador_id == 1) {
-        //     $val = 0;
-        //     foreach ($meta->programacion_meta as $rep) {
-        //         if ($val > $rep->meta_alcanzada) {
-        //             $val = $rep->meta_alcanzada;
-        //         }
-        //     }
-        //     $meta->porcentaje_avance = $val * 100;
-        // }else{
-        //     $sum = 0;
-        //     foreach ($meta->meta_alcanzada as $rep) {
-        //         $sum += $rep->meta_alcanzada;
-        //     }
-        //     $meta->porcentaje_avance = $sum * 100;
-        // }
     
         return view('ejecucion_metas.show', ['meta' => $meta]);
     }
@@ -44,6 +30,15 @@ class ReportesController extends Controller
         $meta->load('indicador', 'proyectos.proyecto', 'hoja_de_vida');
         // listar los 4 reportes de cada año
         $meta->programacion_meta = $meta->avanceFisico();
+        foreach ($meta->programacion_meta as $programacion_meta) {
+            $student = MetaDeProductosGrafica::updateOrCreate(
+                ['meta_producto_id' => $programacion_meta->meta_producto_id, 'year' => $programacion_meta->year],
+                [
+                    'meta_programada'=> $programacion_meta->meta_programada,
+                    'meta_alcanzada'=> $programacion_meta->meta_alcanzada
+                ]
+            );
+        }
     
         return response()->json(['meta' => $meta]);
     }
