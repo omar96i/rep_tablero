@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('periodo_id');
             $table->unsignedBigInteger('hecho_id');
             $table->unsignedBigInteger('politica_id');
-            $table->unsignedBigInteger('estrategia_id');
+            // $table->unsignedBigInteger('estrategia_id');
             $table->unsignedBigInteger('programa_id');
             $table->year('vigencia');
             $table->string('nombre');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('periodo_id')->references('id')->on('periodos');
             $table->foreign('hecho_id')->references('id')->on('hechos');
             $table->foreign('politica_id')->references('id')->on('politicas');
-            $table->foreign('estrategia_id')->references('id')->on('estrategias');
+            // $table->foreign('estrategia_id')->references('id')->on('estrategias');
             $table->foreign('programa_id')->references('id')->on('programas');
         });
     }

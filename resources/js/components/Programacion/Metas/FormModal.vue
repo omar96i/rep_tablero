@@ -27,7 +27,7 @@
                                         </template>
                                     </select>
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label class="form-label" for="input-estrategia_id">Selecciona una Estrategia</label>
                                     <select class="form-select" id="input-estrategia_id" v-model="meta.estrategia_id" @change="clearSelect('estrategia_id')">
                                         <option value="" selected disabled>Seleccionar...</option>
@@ -35,13 +35,13 @@
                                             <option v-if="estrategia.politica_id == meta.politica_id" :value="estrategia.id">{{ estrategia.nombre }}</option>
                                         </template>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label class="form-label" for="input-programa_id">Selecciona un Programa</label>
                                     <select id="input-programa_id" class="form-select" v-model="meta.programa_id">
                                         <option value="" selected disabled>Seleccionar...</option>
                                         <template v-for="(programa, index) in programas" :key="index">
-                                            <option v-if="programa.estrategia_id == meta.estrategia_id" :value="programa.id">{{ programa.nombre }}</option>
+                                            <option v-if="programa.politica_id == meta.politica_id" :value="programa.id">{{ programa.nombre }}</option>
                                         </template>
                                     </select>
                                 </div>
@@ -130,31 +130,31 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="input-recurso_cuatrienio">Recursos cuatrienio</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" class="form-control" id="input-recurso_cuatrienio" v-model="meta.recurso_cuatrienio" required>
+                                        <input type="number" class="form-control" id="input-recurso_cuatrienio" v-model="meta.recurso_cuatrienio" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="form-label" for="input-recurso_year_1">Recurso año 1</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="year" class="form-control" id="input-recurso_year_1" v-model="meta.recurso_year_1" required>
+                                        <input type="number" class="form-control" id="input-recurso_year_1" v-model="meta.recurso_year_1" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="form-label" for="input-recurso_year_2">Recurso año 2</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="year" class="form-control" id="input-recurso_year_2" v-model="meta.recurso_year_2" required>
+                                        <input type="number" class="form-control" id="input-recurso_year_2" v-model="meta.recurso_year_2" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="form-label" for="input-recurso_year_3">Recurso año 3</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="year" class="form-control" id="input-recurso_year_3" v-model="meta.recurso_year_3" required>
+                                        <input type="number" class="form-control" id="input-recurso_year_3" v-model="meta.recurso_year_3" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
                                     <label class="form-label" for="input-recurso_year_4">Recurso año 4</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="year" class="form-control" id="input-recurso_year_4" v-model="meta.recurso_year_4" required>
+                                        <input type="number" class="form-control" id="input-recurso_year_4" v-model="meta.recurso_year_4" required>
                                     </div>
                                 </div>
                                 <div class=" mb-3">
@@ -185,7 +185,7 @@ export default {
         return{
             hechos: [],
             politicas: [],
-            estrategias: [],
+            // estrategias: [],
             programas: [],
             indicadores: [],
             gerentes: [],
@@ -210,12 +210,12 @@ export default {
                 console.log(error);
             })
 
-            axios.get('/estrategias-get').then(res=>{
-                console.log(res);
-                this.estrategias = res.data.estrategias
-            }).catch(error => {
-                console.log(error);
-            })
+            // axios.get('/estrategias-get').then(res=>{
+            //     console.log(res);
+            //     this.estrategias = res.data.estrategias
+            // }).catch(error => {
+            //     console.log(error);
+            // })
 
             axios.get('/programas-get').then(res=>{
                 this.programas = res.data.programas
@@ -258,12 +258,8 @@ export default {
         clearSelect(input){
             if (input == 'hecho_id') {
                 this.meta.politica_id = ''
-                this.meta.estrategia_id = ''
                 this.meta.programa_id = ''
             }else if(input == 'politica_id') {
-                this.meta.estrategia_id = ''
-                this.meta.programa_id = ''
-            }else if(input == 'estrategia_id'){
                 this.meta.programa_id = ''
             }
         }

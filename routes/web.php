@@ -162,8 +162,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('politicas', PoliticaController::class);
     Route::get('/politicas-get', [PoliticaController::class, 'get'])->name('politicas.get');
 
-    Route::resource('estrategias', EstrategiaController::class);
-    Route::get('/estrategias-get', [EstrategiaController::class, 'get'])->name('estrategias.get');
+    // Route::resource('estrategias', EstrategiaController::class);
+    // Route::get('/estrategias-get', [EstrategiaController::class, 'get'])->name('estrategias.get');
 
     Route::resource('programas', ProgramaController::class);
     Route::get('/programas-get', [ProgramaController::class, 'get'])->name('programas.get');

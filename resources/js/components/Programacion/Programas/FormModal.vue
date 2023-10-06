@@ -27,7 +27,7 @@
                                         </template>
                                     </select>
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label class="form-label" for="basic-default-fullname">Selecciona una Estrategia</label>
                                     <select id="input-politica" class="form-select" name="" v-model="programa.estrategia_id">
                                         <option value="" selected disabled>Seleccionar...</option>
@@ -35,7 +35,7 @@
                                             <option v-if="estrategia.politica_id == programa.politica_id" :value="estrategia.id">{{ estrategia.nombre }}</option>
                                         </template>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="mb-3">
                                     <label class="form-label" for="basic-default-fullname">Nombre</label>
                                     <div class="input-group input-group-merge">
@@ -73,14 +73,14 @@ export default {
         return{
             hechos: [],
             politicas: [],
-            estrategias: [],
+            // estrategias: [],
             programa: this.data_programa
         }
     },
     created() {
         this.getHechos()
         this.getPoliticas()
-        this.getEstrategias()
+        // this.getEstrategias()
     },
     methods:{
         getHechos(){
@@ -99,14 +99,14 @@ export default {
                 console.log(error);
             })
         },
-        getEstrategias(){
-            axios.get('/estrategias-get').then(res=>{
-                // console.log(res);
-                this.estrategias = res.data.estrategias
-            }).catch(error => {
-                console.log(error);
-            })
-        },
+        // getEstrategias(){
+        //     axios.get('/estrategias-get').then(res=>{
+        //         // console.log(res);
+        //         this.estrategias = res.data.estrategias
+        //     }).catch(error => {
+        //         console.log(error);
+        //     })
+        // },
         saveProduct(){
             if (this.programa.id) {
                 axios.put(`/programas/${this.programa.id}`, this.programa).then(res=>{
@@ -134,9 +134,6 @@ export default {
         clearSelect(input){
             if (input == 'hecho_id') {
                 this.programa.politica_id = ''
-                this.programa.estrategia_id = ''
-            }else if(input == 'politica_id') {
-                this.programa.estrategia_id = ''
             }
         }
     }

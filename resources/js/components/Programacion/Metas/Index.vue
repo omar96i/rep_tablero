@@ -82,7 +82,7 @@ export default{
                     periodo_id: this.periodo.id,
                     hecho_id: '',
                     politica_id: '',
-                    estrategia_id: '',
+                    // estrategia_id: '',
                     programa_id: '',
                     indicador_id: '',
                     user_id: '',

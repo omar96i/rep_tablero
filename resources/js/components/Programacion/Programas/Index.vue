@@ -13,7 +13,7 @@
                         <!-- <th>Periodo</th> -->
                         <th>Hecho</th>
                         <th>Periodo</th>
-                        <th>Estrategia</th>
+                        <!-- <th>Estrategia</th> -->
                         <th>Nombre</th>
                         <th>Peso(%)</th>
                         <th>Descripción</th>
@@ -25,7 +25,7 @@
                         <!-- <td>{{ hecho.periodo }}</td> -->
                         <td>{{ programa.hecho.nombre }}</td>
                         <td>{{ programa.politica.nombre }}</td>
-                        <td>{{ programa.estrategia?.nombre }}</td>
+                        <!-- <td>{{ programa.estrategia?.nombre }}</td> -->
                         <td>{{ programa.nombre }}</td>
                         <td>{{ programa.peso }}</td>
                         <td>{{ programa.descripcion }}</td>
@@ -78,7 +78,7 @@ export default{
                     hecho_id: '',
                     periodo_id: this.periodo.id,
                     politica_id: '',
-                    estrategia_id: '',
+                    // estrategia_id: '',
                     nombre: '',
                     peso: '',
                     descripcion: ''

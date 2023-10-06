@@ -61,11 +61,6 @@
                 "slug": "programacion-politicas"
             },
             {
-                "url": "/estrategias",
-                "name": "Estrategias",
-                "slug": "programacion-estrategias"
-            },
-            {
                 "url": "/programas",
                 "name": "Programas",
                 "slug": "programacion-programas"

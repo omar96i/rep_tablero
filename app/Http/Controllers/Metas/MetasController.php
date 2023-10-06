@@ -39,7 +39,7 @@ class MetasController extends Controller
                     ->where('user_id', auth()->user()->id)
                     ->where('hecho_id', $request->hecho_id)
                     ->where('politica_id', $request->politica_id)
-                    // ->where('estrategia_id', $request->estrategia_id)
+                    // ->where('estrategia_id', $request->estrategia_id) modelo estrategias eliminado
                     ->where('programa_id', $request->programa_id)
                     ->get();
         return response()->json(['metas' => $metas]);

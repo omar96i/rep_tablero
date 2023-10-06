@@ -16,7 +16,7 @@ class MetaDeProducto extends Model
         'periodo_id',
         'hecho_id',
         'politica_id',
-        'estrategia_id',
+        // 'estrategia_id', // eliminar campo estrategias
         'programa_id',
         'indicador_id',
         'user_id',

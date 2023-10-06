@@ -20,7 +20,7 @@
                     </template>
                 </select>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <label>Estrategia:</label>
                 <select class="form-select" name="" v-model="consulta.estrategia_id" @change="clearSelect('estrategia_id')">
                     <option value="" selected disabled>Seleccionar...</option>
@@ -28,7 +28,7 @@
                         <option v-if="consulta.politica_id == item.politica_id" :value="item.id">{{ item.nombre }}</option>
                     </template>
                 </select>
-            </div>
+            </div> -->
             <div class="col">
                 <label>Programa:</label>
                 <select class="form-select" name="" v-model="consulta.programa_id" required>
@@ -75,13 +75,13 @@ export default{
             spinner: false,
             select_hechos: [],
             select_politicas: [],
-            select_estrategias: [],
+            // select_estrategias: [],
             select_programas: [],
 
             consulta: {
                 hecho_id: '',
                 politica_id: '',
-                estrategia_id: '',
+                // estrategia_id: '',
                 programa_id: '',
             },
 
@@ -109,13 +109,13 @@ export default{
                 console.log(error);
             })
 
-            // estrategias
-            axios.get('/estrategias-get').then(res=>{
-                // console.log(res);
-                this.select_estrategias = res.data.estrategias
-            }).catch(error => {
-                console.log(error);
-            })
+            // // estrategias
+            // axios.get('/estrategias-get').then(res=>{
+            //     // console.log(res);
+            //     this.select_estrategias = res.data.estrategias
+            // }).catch(error => {
+            //     console.log(error);
+            // })
 
             // programas
             axios.get('/programas-get').then(res=>{
@@ -138,12 +138,8 @@ export default{
         clearSelect(input){
             if (input == 'hecho_id') {
                 this.consulta.politica_id = ''
-                this.consulta.estrategia_id = ''
                 this.consulta.programa_id = ''
             }else if(input == 'politica_id') {
-                this.consulta.estrategia_id = ''
-                this.consulta.programa_id = ''
-            }else if(input == 'estrategia_id'){
                 this.consulta.programa_id = ''
             }
         }

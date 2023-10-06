@@ -20,7 +20,7 @@
                     </template>
                 </select>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <label>Estrategia:</label>
                 <select class="form-select" name="" v-model="estrategia_id" required>
                     <option value="" selected disabled>Seleccionar...</option>
@@ -28,7 +28,7 @@
                         <option v-if="politica_id == item.politica_id" :value="item.id">{{ item.nombre }}</option>
                     </template>
                 </select>
-            </div>
+            </div> -->
             <div class="col">
                 <label>Programa:</label>
                 <select class="form-select" name="" v-model="programa_id" required>
@@ -154,7 +154,7 @@ export default{
             spinner: false,
             select_hechos: [],
             select_politicas: [],
-            select_estrategias: [],
+            // select_estrategias: [],
             select_programas: [],
             select_metas_productos: [],
             select_indicadores: [],
@@ -171,7 +171,7 @@ export default{
 
             hecho_id: '',
             politica_id: '',
-            estrategia_id: '',
+            // estrategia_id: '',
             programa_id: '',
             año: (new Date).getFullYear(),
 
@@ -200,13 +200,13 @@ export default{
                 console.log(error);
             })
 
-            // estrategias
-            axios.get('/estrategias-get').then(res=>{
-                // console.log(res);
-                this.select_estrategias = res.data.estrategias
-            }).catch(error => {
-                console.log(error);
-            })
+            // estrategias -- Modulo eliminado
+            // axios.get('/estrategias-get').then(res=>{
+            //     // console.log(res);
+            //     this.select_estrategias = res.data.estrategias
+            // }).catch(error => {
+            //     console.log(error);
+            // })
 
             // programas
             axios.get('/programas-get').then(res=>{

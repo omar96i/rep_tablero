@@ -29,10 +29,6 @@ class Politica extends Model
         return $this->hasMany(Programa::class, 'politica_id');
     }
 
-    public function estrategias(){
-        return $this->hasMany(Estrategia::class, 'politica_id');
-    }
-
     public function meta_productos(){
         return $this->hasMany(MetaDeProducto::class, 'politica_id');
     }

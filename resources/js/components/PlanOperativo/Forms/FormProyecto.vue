@@ -20,7 +20,7 @@
                         </template>
                     </select>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <label>Estrategias:</label>
                     <select class="form-select" name="" v-model="proyecto.estrategia_id" required>
                         <option value="" selected disabled>Seleccionar...</option>
@@ -28,7 +28,7 @@
                             <option v-if="proyecto.politica_id == item.politica_id" :value="item.id">{{ item.nombre }}</option>
                         </template>
                     </select>
-                </div>
+                </div> -->
                 <div class="col">
                     <label>Programa:</label>
                     <select class="form-select" name="" v-model="proyecto.programa_id" required>
@@ -72,12 +72,12 @@ export default {
             select_hechos: [],
             select_politicas: [],
             select_programas: [],
-            select_estrategias: [],
+            // select_estrategias: [],
             proyecto: {
                 hecho_id: '',
                 politica_id: '',
                 programa_id: '',
-                estrategia_id: '',
+                // estrategia_id: '', //eliminar estrategia
                 periodo_id: '',
                 vigencia: '',
                 nombre: '',
@@ -116,13 +116,13 @@ export default {
                 console.log(error);
             })
 
-            // estrategias
-            axios.get('/estrategias-get').then(res=>{
-                // console.log(res);
-                this.select_estrategias = res.data.estrategias
-            }).catch(error => {
-                console.log(error);
-            })
+            // // estrategias
+            // axios.get('/estrategias-get').then(res=>{
+            //     // console.log(res);
+            //     this.select_estrategias = res.data.estrategias
+            // }).catch(error => {
+            //     console.log(error);
+            // })
 
             // programas
             axios.get('/programas-get').then(res=>{
@@ -154,6 +154,7 @@ export default {
                 axios.post('/proyectos', this.proyecto).then(res=>{
                     console.log(res)
                     if (res.data.status) {
+                        // pendiente setiar el registro
                         this.$swalMini('success', `${res.data.message}`);
                         this.$emit('set-id', res.data.ultimo_creado);
                     }
