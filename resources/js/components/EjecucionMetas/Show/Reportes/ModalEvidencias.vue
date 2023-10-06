@@ -57,21 +57,24 @@
                         <hr class="my-3">
                         <div class="col-12">
                             <h5>Archivos cargados</h5>
-                            <ul class="list-group">
-                                <template v-for="(evidencia, index) in evidencias" :key="index">
-                                    <button v-if="evidencia.tipo == formData.tipo" class="list-group-item d-flex align-items-center justify-content-between">
-                                        <div @click="descargar(evidencia.id)">
-                                            <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
-                                            {{ evidencia.route_name }}
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-danger btn-sm" type="button"
-                                                @click="deleteEvidencia(evidencia.id)"><i
-                                                    class='bx bx-x-circle'></i></button>
-                                        </div>
-                                    </button>
+                            <div class="row">
+                                <template v-for="(evidencia, index) in evidencias">
+                                    <ul class="list-group col-12 col-md-6 mb-2" v-if="evidencia.tipo == formData.tipo" :key="index">
+                                        <iframe v-if="evidencia.tipo == 'documento'" :src="`/storage/documentos/${evidencia.route_name}`" class="pdf-iframe" frameborder="0"></iframe>
+                                        <img v-if="evidencia.tipo == 'imagen'" :src="`/storage/imagenes/${evidencia.route_name}`" alt="Imagen" class="img-fluid">
+                                        <video v-if="evidencia.tipo === 'video'" :src="`/storage/videos/${evidencia.route_name}`" class="video-responsive" controls frameborder="0"></video>
+                                        <button class="list-group-item d-flex align-items-center justify-content-between">
+                                            <div @click="descargar(evidencia.id)">
+                                                <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
+                                                {{ evidencia.route_name }}
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-danger btn-sm" type="button" @click="deleteEvidencia(evidencia.id)"><i class='bx bx-x-circle'></i></button>
+                                            </div>
+                                        </button>
+                                    </ul>
                                 </template>
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

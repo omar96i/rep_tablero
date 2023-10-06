@@ -20527,7 +20527,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.evidencias = res.data.evidencias;
       })["catch"](function (error) {
         var _console;
-        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2650289853_0", error)));
+        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("2374923541_0", error)));
       });
     },
     submitForm: function submitForm() {
@@ -20545,7 +20545,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       })["catch"](function (error) {
         var _console2;
-        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2650289853_1", error.response)));
+        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("2374923541_1", error.response)));
         _this2.$swalMini('error', "Se ha producido un error al realizar la acci\xF3n.");
       });
     },
@@ -20565,14 +20565,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this3 = this;
       axios["delete"]("/metas/evidencias/".concat(evidencia_id)).then(function (res) {
         var _console3;
-        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2650289853_2", res)));
+        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("2374923541_2", res)));
         if (res.data.status) {
           _this3.$swalMini('success', "".concat(res.data.message, "."));
           _this3.getEvidencias();
         }
       })["catch"](function (error) {
         var _console4;
-        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2650289853_3", error.response)));
+        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("2374923541_3", error.response)));
       });
     },
     descargar: function descargar(id) {
@@ -21792,7 +21792,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       modal_column: '',
       hecho_id: '',
       politica_id: '',
-      estrategia_id: '',
+      // estrategia_id: '',
       programa_id: '',
       año: new Date().getFullYear(),
       proyectos: []
@@ -21811,7 +21811,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.select_hechos = res.data.hechos;
       })["catch"](function (error) {
         var _console;
-        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("1328175050_0", error)));
+        /* eslint-disable */(_console = console).log.apply(_console, _toConsumableArray(oo_oo("558166799_0", error)));
       });
 
       // politicas
@@ -21820,7 +21820,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.select_politicas = res.data.politicas;
       })["catch"](function (error) {
         var _console2;
-        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("1328175050_1", error)));
+        /* eslint-disable */(_console2 = console).log.apply(_console2, _toConsumableArray(oo_oo("558166799_1", error)));
       });
 
       // estrategias -- Modulo eliminado
@@ -21837,7 +21837,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.select_programas = res.data.programas;
       })["catch"](function (error) {
         var _console3;
-        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("1328175050_2", error)));
+        /* eslint-disable */(_console3 = console).log.apply(_console3, _toConsumableArray(oo_oo("558166799_2", error)));
       });
     },
     getProyectos: function getProyectos() {
@@ -21874,7 +21874,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       })["catch"](function (error) {
         var _console4;
-        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("1328175050_3", error)));
+        /* eslint-disable */(_console4 = console).log.apply(_console4, _toConsumableArray(oo_oo("558166799_3", error)));
       })["finally"](function (f) {
         _this2.spinner = false;
       });
@@ -25823,18 +25823,20 @@ var _hoisted_26 = {
 };
 var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Archivos cargados", -1 /* HOISTED */);
 var _hoisted_28 = {
-  "class": "list-group"
+  "class": "row"
 };
-var _hoisted_29 = {
-  key: 0,
+var _hoisted_29 = ["src"];
+var _hoisted_30 = ["src"];
+var _hoisted_31 = ["src"];
+var _hoisted_32 = {
   "class": "list-group-item d-flex align-items-center justify-content-between"
 };
-var _hoisted_30 = ["onClick"];
-var _hoisted_31 = ["onClick"];
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_33 = ["onClick"];
+var _hoisted_34 = ["onClick"];
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-x-circle"
 }, null, -1 /* HOISTED */);
-var _hoisted_33 = [_hoisted_32];
+var _hoisted_36 = [_hoisted_35];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
@@ -25895,23 +25897,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onChange: _cache[6] || (_cache[6] = function () {
       return $options.handleFileChange && $options.handleFileChange.apply($options, arguments);
     })
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_23)])]), _hoisted_24], 32 /* HYDRATE_EVENTS */)]), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_28, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.evidencias, function (evidencia, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_23)])]), _hoisted_24], 32 /* HYDRATE_EVENTS */)]), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.evidencias, function (evidencia, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [evidencia.tipo == $data.formData.tipo ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", {
+      "class": "list-group col-12 col-md-6 mb-2",
       key: index
-    }, [evidencia.tipo == $data.formData.tipo ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    }, [evidencia.tipo == 'documento' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("iframe", {
+      key: 0,
+      src: "/storage/documentos/".concat(evidencia.route_name),
+      "class": "pdf-iframe",
+      frameborder: "0"
+    }, null, 8 /* PROPS */, _hoisted_29)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), evidencia.tipo == 'imagen' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+      key: 1,
+      src: "/storage/imagenes/".concat(evidencia.route_name),
+      alt: "Imagen",
+      "class": "img-fluid"
+    }, null, 8 /* PROPS */, _hoisted_30)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), evidencia.tipo === 'video' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("video", {
+      key: 2,
+      src: "/storage/videos/".concat(evidencia.route_name),
+      "class": "video-responsive",
+      controls: "",
+      frameborder: "0"
+    }, null, 8 /* PROPS */, _hoisted_31)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       onClick: function onClick($event) {
         return $options.descargar(evidencia.id);
       }
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2')
-    }, null, 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(evidencia.route_name), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_30), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, null, 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(evidencia.route_name), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_33), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       "class": "btn btn-danger btn-sm",
       type: "button",
       onClick: function onClick($event) {
         return $options.deleteEvidencia(evidencia.id);
       }
-    }, _hoisted_33, 8 /* PROPS */, _hoisted_31)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
-  }), 128 /* KEYED_FRAGMENT */))])])])])])])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+    }, _hoisted_36, 8 /* PROPS */, _hoisted_34)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
+  }), 256 /* UNKEYED_FRAGMENT */))])])])])])])])], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
 /***/ }),
