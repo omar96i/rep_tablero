@@ -121,27 +121,28 @@ class MetaDeProducto extends Model
                 $meta_programada = $meta->{$prop};
             }
 
-            $filteredReportes = $meta->reportes->map(function ($reporte) use ($year, $meta, &$meta_programada) {
-                $reporte_calculado = [];
-
-                if (intval($reporte->meta_año) == $year && $meta_programada != 0) {
-                    $reporte_calculado = new stdClass();
-                    $reporte_calculado->meta_producto_id = $meta->id;
-                    $reporte_calculado->year = $year;
-                    $reporte_calculado->meta_programada = $meta_programada;
-                    $reporte_calculado->meta_alcanzada = $reporte->meta_alcanzada;
-                    $reporte_calculado->porcentaje_avance = ($reporte->meta_alcanzada * 100) / $meta_programada;
-                }
-
-                return empty($reporte_calculado) ? null : $reporte_calculado;
-            })->filter(); // Filtrar los objetos nulos
-
-            if ($filteredReportes->isEmpty()) {
-                // Si no se encontraron objetos que cumplan la condición, devolver algo por defecto
+            $filteredReporte = null;
+            if ($meta_programada != 0) {
+                $filteredReporte = $meta->reportes()
+                    ->where('meta_año', $year)
+                    ->orderBy('created_at', 'desc')
+                    ->first();
+            }
+        
+            if (!$filteredReporte) {
+                // Si no se encontró un objeto que cumpla la condición, devolver algo por defecto
                 return (object)['meta_producto_id' => $meta->id, 'year' => $year, 'meta_programada' => $meta_programada, 'meta_alcanzada' => 0, 'porcentaje_avance' => 0];
             }
+        
+            $reporte_calculado = new stdClass();
+            $reporte_calculado->meta_producto_id = $meta->id;
+            $reporte_calculado->year = $year;
+            $reporte_calculado->meta_programada = $meta_programada;
+            $reporte_calculado->meta_alcanzada = $filteredReporte->meta_alcanzada;
+            $reporte_calculado->porcentaje_avance = ($filteredReporte->meta_alcanzada * 100) / $meta_programada;
+        
+            return $reporte_calculado;
 
-            return $filteredReportes->first(); // Devolver el primer objeto que cumple la condición
         })->toArray();
 
         return $programacion_meta;
