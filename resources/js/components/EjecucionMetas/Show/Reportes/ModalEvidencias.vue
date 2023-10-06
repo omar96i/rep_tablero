@@ -81,6 +81,7 @@
             </div>
         </div>
     </div>
+    <spinner v-if="spinner"></spinner>
 </template>
 
 <script>
@@ -94,6 +95,7 @@ export default {
                 archivos: [],
             },
             evidencias: [],
+            spinner: false
         };
     },
     created() {
@@ -110,6 +112,7 @@ export default {
                 })
         },
         submitForm() {
+            this.spinner = true
             const formData = new FormData();
 
             formData.append('reporte_id', this.formData.reporte_id);
@@ -123,9 +126,11 @@ export default {
                     if (res.data.status) {
                         this.$swalMini('success', `${res.data.message}`);
                         this.getEvidencias()
+                        this.spinner = false
                     }
                 })
                 .catch(error => {
+                    this.spinner = false
                     console.log(error.response)
                     this.$swalMini('error', `Se ha producido un error al realizar la acción.`);
                 })
@@ -146,14 +151,17 @@ export default {
         },
 
         deleteEvidencia(evidencia_id) {
+            this.spinner = true
             axios.delete(`/metas/evidencias/${evidencia_id}`).then(res => {
                 console.log(res)
                 if (res.data.status) {
                     this.$swalMini('success', `${res.data.message}.`)
                     this.getEvidencias()
+                    this.spinner = false
                 }
             }).catch(error => {
                 console.log(error.response)
+                this.spinner = false
             })
         },
 
