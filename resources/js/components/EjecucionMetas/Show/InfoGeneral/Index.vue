@@ -63,7 +63,7 @@
                 <button class="btn btn-primary" @click="openFicha()">Ver ficha de la meta</button>
             </div>
         </div>
-        <modal-ficha :meta="meta"></modal-ficha>
+        <modal-ficha v-if="modal_ficha" :meta="meta"></modal-ficha>
     </div>
 </template>
 <script>
@@ -78,6 +78,7 @@ export default {
             form_programacion: false,
             acumulado_metas: 0,
             acumulado_porcentaje: 0,
+            modal_ficha: false,
         }
     },
     created() {
@@ -85,10 +86,16 @@ export default {
     },
     methods: {
         openFicha(){
-            $('#modalFicha').modal({backdrop: 'static', keyboard: false}).modal('show')
+            this.modal_ficha = true
+            setTimeout(() => {
+                $('#modalFicha').modal({backdrop: 'static', keyboard: false}).modal('show')
+            }, 300);
         },
         closeModal(){
             $('#modalFicha').modal('hide')
+            setTimeout(() => {
+                this.modal_ficha = false
+            }, 300);
         },
         calcularAcumulado(){
             // this.acumulado_metas = parseInt(this.meta.meta_year_1) + parseInt(this.meta.meta_year_2) + parseInt(this.meta.meta_year_3) + parseInt(this.meta.meta_year_4)

@@ -43,7 +43,7 @@
                 <div class="input-group input-group-merge">
                     <select class="form-select" v-model="año" name="" id="">
                         <option value="" selected disabled>Seleccionar...</option>
-                        <option v-for="year in Array.from({length: 70}, (v, i) => i + (2099 - 80))" :value="year">{{ year }}</option>
+                        <option v-for="(item, index) in 4" :key="index">{{ parseInt(periodo.fecha_ini.split('-')[0]) + index }}</option>
                     </select>
                 </div>
             </div>

@@ -64,7 +64,7 @@
                                         <img v-if="evidencia.tipo == 'imagen'" :src="`/storage/imagenes/${evidencia.route_name}`" alt="Imagen" class="img-fluid">
                                         <video v-if="evidencia.tipo === 'video'" :src="`/storage/videos/${evidencia.route_name}`" class="video-responsive" controls frameborder="0"></video>
                                         <button class="list-group-item d-flex align-items-center justify-content-between">
-                                            <div @click="descargar(evidencia.id)">
+                                            <div @click="redirectEvidencia(evidencia)">
                                                 <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
                                                 {{ evidencia.route_name }}
                                             </div>
@@ -164,9 +164,14 @@ export default {
                 this.spinner = false
             })
         },
-
         descargar(id) {
             window.location.href = `/metas/evidencias/download/${id}`;
+        },
+        redirectEvidencia(evidencia) {
+            const base_url = `/storage/${evidencia.tipo === 'imagen' ? 'imagene' : evidencia.tipo}s/`;
+            console.log(base_url);
+            const url = `${base_url}${evidencia.route_name}`;
+            window.open(url, '_blank');
         }
     }
 }

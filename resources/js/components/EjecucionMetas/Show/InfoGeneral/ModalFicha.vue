@@ -85,9 +85,10 @@
                                                 realizadas</h5>
                                             <div class="card-body border border-secondary rounded-bottom px-0">
                                                 <ul class="list-group">
-                                                    <li type="button" v-for="(reporte, index) in meta.reportes" :key="index"
+                                                    <li type="button" v-for="(reporte, index) in reportes" :key="index"
                                                         class="list-group-item" aria-current="true"
-                                                        @click="getEvidencias(reporte.id)">
+                                                        @click="getEvidencias(reporte.id)"
+                                                        :style="{ 'white-space': 'pre-line' }">
                                                         <p><b>Fecha de reporte:</b> {{ reporte.fecha_reporte }}</p>
                                                         {{ reporte.actividad }}
                                                     </li>
@@ -119,30 +120,57 @@
                                                 </li>
                                             </ul>
                                             <div class="tab-content">
-                                                <div class="tab-pane fade show active overflow-scroll" id="navs-documentos" role="tabpanel">
-                                                    <div class="row" style="max-height: 300px;">
+                                                <div class="tab-pane fade show active" id="navs-documentos" role="tabpanel">
+                                                    <div class="overflow-auto row" style="max-height: 300px;">
                                                         <template v-for="(evidencia, index) in evidencias" :key="index">
-                                                            <div class="col-6" v-if="evidencia.tipo === 'documento'">
+                                                            <ul class="list-group col-12 mb-3" v-if="evidencia.tipo === 'documento'">
                                                                 <iframe :src="`/storage/documentos/${evidencia.route_name}`" class="pdf-iframe" frameborder="0"></iframe>
-                                                            </div>
+                                                                <button class="list-group-item d-flex align-items-center justify-content-between">
+                                                                    <div @click="redirectEvidencia(evidencia)">
+                                                                        <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
+                                                                        {{ evidencia.route_name }}
+                                                                    </div>
+                                                                    <div>
+                                                                        <button class="btn btn-danger btn-sm" type="button" @click="deleteEvidencia(evidencia.id)"><i class='bx bx-x-circle'></i></button>
+                                                                    </div>
+                                                                </button>
+                                                            </ul>
                                                         </template>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="navs-fotos" role="tabpanel">
                                                     <div class="overflow-auto row" style="max-height: 300px;">
                                                         <template v-for="(evidencia, index) in evidencias" :key="index">
-                                                            <div class="col-6 mb-2" v-if="evidencia.tipo == 'imagen'">
+                                                            <ul class="list-group col-12 mb-3" v-if="evidencia.tipo == 'imagen'">
                                                                 <img :src="`/storage/imagenes/${evidencia.route_name}`" alt="Imagen" class="img-fluid">
-                                                            </div>
+                                                                <button class="list-group-item d-flex align-items-center justify-content-between">
+                                                                    <div @click="redirectEvidencia(evidencia)">
+                                                                        <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
+                                                                        {{ evidencia.route_name }}
+                                                                    </div>
+                                                                    <div>
+                                                                        <button class="btn btn-danger btn-sm" type="button" @click="deleteEvidencia(evidencia.id)"><i class='bx bx-x-circle'></i></button>
+                                                                    </div>
+                                                                </button>
+                                                            </ul>
                                                         </template>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="navs-videos" role="tabpanel">
                                                     <div class="overflow-auto row" style="max-height: 300px;">
                                                         <template v-for="(evidencia, index) in evidencias" :key="index">
-                                                            <div class="col-6" v-if="evidencia.tipo === 'video'">
+                                                            <ul class="list-group col-12 mb-3" v-if="evidencia.tipo === 'video'">
                                                                 <video :src="`/storage/videos/${evidencia.route_name}`" class="video-responsive" controls frameborder="0"></video>
-                                                            </div>
+                                                                <button class="list-group-item d-flex align-items-center justify-content-between">
+                                                                    <div @click="redirectEvidencia(evidencia)">
+                                                                        <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
+                                                                        {{ evidencia.route_name }}
+                                                                    </div>
+                                                                    <div>
+                                                                        <button class="btn btn-danger btn-sm" type="button" @click="deleteEvidencia(evidencia.id)"><i class='bx bx-x-circle'></i></button>
+                                                                    </div>
+                                                                </button>
+                                                            </ul>
                                                         </template>
                                                     </div>
                                                 </div>
@@ -170,13 +198,24 @@ export default {
     data() {
         return {
             evidencias: [],
-            alert: true
+            alert: true,
+            reportes: [],
         };
     },
     created() {
-
+        this.getReportes(this.meta.id)
     },
     methods: {
+        getReportes(){
+            axios.get(`/metas/reportes/get/${this.meta.id}`)
+            .then(res => {
+                console.log(res.data);
+                this.reportes = res.data.reportes
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
         getEvidencias(id) {
             this.alert = false
             axios.get(`/metas/evidencias/${id}`)
@@ -187,6 +226,12 @@ export default {
                     console.log(error);
                 })
         },
+        redirectEvidencia(evidencia) {
+            const base_url = `/storage/${evidencia.tipo === 'imagen' ? 'imagene' : evidencia.tipo}s/`;
+            console.log(base_url);
+            const url = `${base_url}${evidencia.route_name}`;
+            window.open(url, '_blank');
+        }
     }
 }
 

@@ -19,7 +19,7 @@
                         <tr v-for="(reporte, index) in reportes" :key="index">
                             <td class="text-nowrap">{{ reporte.fecha_reporte }}</td>
                             <td>{{ reporte.meta_alcanzada }}</td>
-                            <td>{{ reporte.actividad }}</td>
+                            <td :style="{ 'white-space': 'pre-line' }">{{ reporte.actividad }}</td>
                             <td class="text-center d-flex">
                                 <button type="button" class="btn btn-primary btn-sm mx-1" @click="openModal(reporte)"><i class='bx bxs-edit' ></i> Editar</button>
                                 <button type="button" class="btn btn-info btn-sm mx-1" @click="openModalEvidencias(reporte)"><i class='bx bx-show-alt'></i> Evidencias</button>
@@ -59,7 +59,6 @@ export default {
         getReportes(){
             axios.get(`/metas/reportes/get/${this.meta.id}`)
             .then(res => {
-                console.log(res.data);
                 this.reportes = res.data.reportes
             })
             .catch(error => {
