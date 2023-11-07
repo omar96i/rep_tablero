@@ -30113,7 +30113,7 @@ function sweetUtils(type, message) {
     icon: type,
     title: message,
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
