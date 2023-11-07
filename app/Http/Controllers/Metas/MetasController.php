@@ -36,7 +36,7 @@ class MetasController extends Controller
     public function indexData(Request $request)
     {
         $metas = MetaDeProducto::with('hecho', 'politica', 'programa', 'periodo')
-                    ->where('user_id', auth()->user()->id)
+                    // ->where('user_id', auth()->user()->id)
                     ->where('hecho_id', $request->hecho_id)
                     ->where('politica_id', $request->politica_id)
                     // ->where('estrategia_id', $request->estrategia_id) modelo estrategias eliminado

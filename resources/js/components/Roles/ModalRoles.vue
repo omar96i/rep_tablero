@@ -17,14 +17,8 @@
                         </div>
                         <div class="row">
                             <div class="form-check col-6" v-for="permission in permisos" :key="permission.id">
-                                <input 
-                                    name="permissions" 
-                                    class="form-check-input" 
-                                    type="checkbox" 
-                                    v-model="roles.permissions" 
-                                    :value="permission.id"
-                                    :id="permission.id"
-                                    :checked="check(permission.id)">
+                                <input name="permissions" class="form-check-input" type="checkbox"
+                                    v-model="selectedPermissions" :value="permission.id">
                                 <label class="form-check-label" :for="permission.id">
                                     {{ permission.name }}
                                 </label>
@@ -33,14 +27,16 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="cierrame" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" @click="action">{{ (tipo == 'insert') ? 'Agregar' : 'Editar' }}</button>
+                    <button type="button" id="cierrame" class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" @click="action">{{ (tipo == 'insert') ? 'Agregar' :
+                        'Editar' }}</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
+  
 <script>
 export default {
     data() {
@@ -54,61 +50,61 @@ export default {
             selectedPermissions: [],
         }
     },
-    created(){
-        this.getPermisos()
+    created() {
+        this.getPermisos();
     },
     methods: {
-        check(id){
-            return this.roles.permissions.find((objeto) => objeto.id === id);
-        },
-        getPermisos(){
-            axios.get(`/permisos/get-all`).then(res => {
-                // console.log("Datos de Roles", this.roles)
-                this.permisos = res.data.permisos;
-            }).catch(res => {
-                console.log(res.response)
-            })
+        getPermisos() {
+            axios.get(`/permisos/get-all`)
+                .then(res => {
+                    this.permisos = res.data.permisos;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
         getData(id) {
-            axios.get(`/roles/getData/${id}`).then(res => {
-                // console.log("Datos de Roles", this.roles)
-                this.roles = res.data.roles;
-            }).catch(res => {
-                console.log(res.response)
-            })
+            axios.get(`/roles/getData/${id}`)
+                .then(res => {
+                    this.roles = res.data.roles;
+                    this.selectedPermissions = this.roles.permissions.map(permission => permission.id);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
         setData(tipo, id) {
             this.roles = {
                 name: "",
                 permissions: [],
-            }
+            };
             if (tipo == 'insert') {
-                this.loading_data = true
-                console.log(tipo)
-                this.tipo = tipo
+                this.tipo = tipo;
             }
             if (tipo == 'edit') {
-                this.loading_data = true
-                console.log(tipo)
-                this.getData(id)
-                this.tipo = tipo
+                this.getData(id);
+                this.tipo = tipo;
             }
         },
         action() {
+            this.roles.permissions = this.selectedPermissions;
             axios.post((this.tipo == 'insert') ? '/roles/store' : `/roles/update/${this.roles.id}`, this.roles)
                 .then(res => {
-                    console.log(res.data)
+                    console.log(res.data);
                     if (res.data.status) {
+                        this.$swalMini('success', `Permisos asignados con exito.`);
+                        this.$parent.getData();
+                        setTimeout(() => {
+                            document.getElementById("cierrame").click();
+                        }, 200);
                     }
-                    this.$parent.getData()
-                    setTimeout(() => {
-                        document.getElementById("cierrame").click()
-                    }, 200)
-                }).catch(res => {
-                    console.log(res.response)
                 })
-        }
-    }
-}
-
+                .catch(error => {
+                    this.alert('Registro', 'Error en el servidor', 'error')
+                    console.log(error);
+                });
+        },
+    },
+};
 </script>
+  
