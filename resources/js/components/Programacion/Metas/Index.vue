@@ -41,7 +41,7 @@
                 </tbody>
             </table>
         </div>
-        <form-modal v-if="form_modal" :data_meta="this.data_meta"></form-modal>
+        <form-modal v-if="form_modal" :periodo="periodo" :data_meta="this.data_meta"></form-modal>
     </div>
 </template>
 <script>
