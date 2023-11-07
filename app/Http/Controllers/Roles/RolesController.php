@@ -26,7 +26,7 @@ class RolesController extends Controller
         $roles->save();
         $permissions = $request->permissions;
         $roles->syncPermissions($permissions);
-        return response()->json(['saved' => true]);
+        return response()->json(['status' => true]);
     }
 
 
