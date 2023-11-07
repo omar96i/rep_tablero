@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('meta_programada')->nullable()->default(0);
             $table->float('meta_alcanzada')->nullable()->default(0);
             $table->float('porcentaje_avance')->nullable()->default(0);
+            $table->float('porcentaje_avance_general')->nullable()->default(0);
             $table->timestamps();
             $table->foreign('meta_producto_id')->references('id')->on('meta_de_productos');
         });

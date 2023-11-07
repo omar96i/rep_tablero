@@ -149,6 +149,23 @@ class MetaDeProducto extends Model
 
         })->toArray();
 
+        $sum_avances = 0;
+        foreach ($programacion_meta as $programacion) {
+            $sum_avances += $programacion->porcentaje_avance;
+        }
+        foreach ($programacion_meta as $programacion) {
+            $programacion->porcentaje_avance_general = round($sum_avances / $numero_metas_programadas, 2);
+            $record = MetaDeProductosGrafica::updateOrCreate(
+                ['meta_producto_id' => $programacion->meta_producto_id, 'year' => $programacion->year],
+                [
+                    'meta_programada'=> $programacion->meta_programada,
+                    'meta_alcanzada'=> $programacion->meta_alcanzada,
+                    'porcentaje_avance'=> $programacion->porcentaje_avance,
+                    'porcentaje_avance_general'=> $programacion->porcentaje_avance_general
+                ]
+            );
+        }
+
         return $programacion_meta;
     }
 }

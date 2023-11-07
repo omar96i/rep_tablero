@@ -30,16 +30,6 @@ class ReportesController extends Controller
         $meta->load('indicador', 'proyectos.proyecto', 'hoja_de_vida');
         // listar los 4 reportes de cada año
         $meta->programacion_meta = $meta->avanceFisico();
-        foreach ($meta->programacion_meta as $programacion_meta) {
-            $student = MetaDeProductosGrafica::updateOrCreate(
-                ['meta_producto_id' => $programacion_meta->meta_producto_id, 'year' => $programacion_meta->year],
-                [
-                    'meta_programada'=> $programacion_meta->meta_programada,
-                    'meta_alcanzada'=> $programacion_meta->meta_alcanzada,
-                    'porcentaje_avance'=> $programacion_meta->porcentaje_avance
-                ]
-            );
-        }
     
         return response()->json(['meta' => $meta]);
     }
