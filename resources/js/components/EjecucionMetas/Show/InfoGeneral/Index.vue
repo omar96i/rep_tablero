@@ -53,8 +53,9 @@
                         </tr>
                         <tr>
                             <td>Acumulado</td>
-                            <td></td>
-                            <td></td>
+                            <td>{{acum_meta.meta_programada}}</td>
+                            <td>{{acum_meta.meta_alcanzada}}</td>
+                            <td>{{acum_meta.porcentaje_avance_general}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -79,6 +80,11 @@ export default {
             acumulado_metas: 0,
             acumulado_porcentaje: 0,
             modal_ficha: false,
+            acum_meta: {
+                meta_programada: '',
+                meta_alcanzada: '',
+                porcentaje_avance_general: '',
+            }
         }
     },
     created() {
@@ -98,8 +104,9 @@ export default {
             }, 300);
         },
         calcularAcumulado(){
-            // this.acumulado_metas = parseInt(this.meta.meta_year_1) + parseInt(this.meta.meta_year_2) + parseInt(this.meta.meta_year_3) + parseInt(this.meta.meta_year_4)
-            // this.acumulado_porcentaje = (this.meta.ejecucion_year_1 + this.meta.ejecucion_year_2 + this.meta.ejecucion_year_3 + this.meta.ejecucion_year_4) / 4
+            this.acum_meta.meta_programada = this.meta.programacion_meta.reduce((acumulador, objeto) => acumulador + objeto.meta_programada, 0);
+            this.acum_meta.meta_alcanzada = this.meta.programacion_meta.reduce((acumulador, objeto) => acumulador + objeto.meta_alcanzada, 0);
+            this.acum_meta.porcentaje_avance_general = this.meta.programacion_meta[0].porcentaje_avance_general;
         },
 
         // changeProgramacion(){

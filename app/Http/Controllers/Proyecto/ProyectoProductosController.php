@@ -20,7 +20,8 @@ class ProyectoProductosController extends Controller
 
     public function savePorcentajesMetas(Request $request){
         foreach ($request->all() as $meta) {
-            ProyectoProducto::find($meta['id'])->update($meta);
+            $meta['porcentaje_evaluacion'] = ($meta['valor_registros'] * 100) / $meta['valor_definitivo'];
+            $meta_producto = ProyectoProducto::find($meta['id'])->update($meta);
         }
         return response()->json(['status' => true, 'message' => 'Porcentajes agregados con exito.']);
     }

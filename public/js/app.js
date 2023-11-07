@@ -19951,7 +19951,12 @@ __webpack_require__.r(__webpack_exports__);
       form_programacion: false,
       acumulado_metas: 0,
       acumulado_porcentaje: 0,
-      modal_ficha: false
+      modal_ficha: false,
+      acum_meta: {
+        meta_programada: '',
+        meta_alcanzada: '',
+        porcentaje_avance_general: ''
+      }
     };
   },
   created: function created() {
@@ -19975,8 +19980,13 @@ __webpack_require__.r(__webpack_exports__);
       }, 300);
     },
     calcularAcumulado: function calcularAcumulado() {
-      // this.acumulado_metas = parseInt(this.meta.meta_year_1) + parseInt(this.meta.meta_year_2) + parseInt(this.meta.meta_year_3) + parseInt(this.meta.meta_year_4)
-      // this.acumulado_porcentaje = (this.meta.ejecucion_year_1 + this.meta.ejecucion_year_2 + this.meta.ejecucion_year_3 + this.meta.ejecucion_year_4) / 4
+      this.acum_meta.meta_programada = this.meta.programacion_meta.reduce(function (acumulador, objeto) {
+        return acumulador + objeto.meta_programada;
+      }, 0);
+      this.acum_meta.meta_alcanzada = this.meta.programacion_meta.reduce(function (acumulador, objeto) {
+        return acumulador + objeto.meta_alcanzada;
+      }, 0);
+      this.acum_meta.porcentaje_avance_general = this.meta.programacion_meta[0].porcentaje_avance_general;
     } // changeProgramacion(){
     //     this.form_programacion ? this.form_programacion = false : this.form_programacion = true
     //     this.calcularAcumulado()
@@ -23766,7 +23776,7 @@ var _hoisted_19 = {
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "table-primary"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Año"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Meta Programada"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Meta Alcanzada"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Porcentaje de ejcución")])], -1 /* HOISTED */);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Acumulado"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td")], -1 /* HOISTED */);
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Acumulado", -1 /* HOISTED */);
 var _hoisted_22 = {
   "class": "text-center my-3"
 };
@@ -23780,7 +23790,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: index
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.year), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.meta_programada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.meta_alcanzada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.porcentaje_avance) + " %", 1 /* TEXT */)]);
-  }), 128 /* KEYED_FRAGMENT */)), _hoisted_21])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.acum_meta.meta_programada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.acum_meta.meta_alcanzada), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.acum_meta.porcentaje_avance_general), 1 /* TEXT */)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-primary",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.openFicha();
