@@ -41,7 +41,7 @@
             </div>
             <div class="mb-2">
                 <label>Nombre del proyecto:</label>
-                <input class="form-control" type="text"  v-model="proyecto.nombre" required>
+                <input class="form-control" type="text" name="nombre" v-model="proyecto.nombre" required>
             </div>
             <div class="mb-2">
                 <label>Vigencia</label>

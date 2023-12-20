@@ -23,6 +23,7 @@ import EjecucionMetaIndex from './components/EjecucionMetas/Index.vue'
 import EjecucionMetaShow from './components/EjecucionMetas/Show/Index.vue'
 
 import PlanOperativo from './components/PlanOperativo/Index.vue';
+import PlanOperativoPublic from './components/PlanOperativo/Index-public.vue';
 import Spinner from './components/Spinner.vue'
 import {sweetUtils} from './sweet-alert-utils';
 
@@ -41,6 +42,7 @@ app.component('estrategias-index', EstrategiasIndex);
 app.component('programas-index', ProgramasIndex);
 app.component('metas-index', MetasIndex);
 app.component('plan-operativo-index', PlanOperativo);
+app.component('plan-operativo-index-public', PlanOperativoPublic);
 app.component('ejecucion-meta-index', EjecucionMetaIndex);
 app.component('ejecucion-meta-show', EjecucionMetaShow);
 app.component('spinner', Spinner);

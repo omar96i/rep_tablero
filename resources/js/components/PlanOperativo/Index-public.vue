@@ -52,11 +52,6 @@
                 <button class="btn btn-outline-primary" type="submit">Consultar</button>
             </div>
         </form>
-        <div>
-            <button type="button" class="btn btn-primary my-2" @click="openModalGeneral(null)">
-                Crear nuevo Proyecto
-            </button>
-        </div>
         <div v-if="proyectos.length == 0" class="alert alert-warning text-black text-center" role="alert">
             Consulta según la jerarquía para ver proyectos
         </div>
@@ -70,7 +65,6 @@
                                 <th rowspan="2" class="text-center">Proyecto</th>
                                 <th colspan="6" class="text-center">Codigos presupuestales</th>
                                 <th rowspan="2" class="text-center">Metas Asociadas</th>
-                                <th rowspan="2" class="text-center"></th>
                             </tr>
                             <tr class="table-primary">
                                 <th>Codigo</th>
@@ -95,24 +89,21 @@
                                 <td class="text-wrap" style="width: 100px;">{{presupuesto.codigo}}</td>
                                 <td>{{formatoMoneda(presupuesto.inicial)}}</td>
                                 <td class="p-1">
-                                    <button type="button" class="col-12 btn btn-label-secondary text-nowrap"  @click="openModalMovimientos(presupuesto.id)"><i class='bx bx-plus-circle bx-tada bx-rotate-90 mx-1' ></i>{{formatoMoneda(presupuesto.definitivo)}}</button>
+                                    {{formatoMoneda(presupuesto.definitivo)}}
                                 </td>
                                 <td class="p-1">
-                                    <button type="button" class="col-12 btn btn-label-secondary text-nowrap"  @click="openModalAdd(presupuesto.id, 'disponibilidad')"><i class='bx bx-plus-circle bx-tada bx-rotate-90 mx-1' ></i>{{formatoMoneda(presupuesto.disponibilidad)}}</button>
+                                    {{formatoMoneda(presupuesto.disponibilidad)}}
                                 </td>
                                 <td class="p-1">
-                                    <button type="button" class="col-12 btn btn-label-secondary text-nowrap" @click="openModalAdd(presupuesto.id, 'registros')"><i class='bx bx-plus-circle bx-tada bx-rotate-90 mx-1' ></i>{{formatoMoneda(presupuesto.registros)}}</button>
+                                    {{formatoMoneda(presupuesto.registros)}}
                                 </td>
                                 <td class="p-1">
-                                    <button type="button" class="col-12 btn btn-label-secondary text-nowrap" @click="openModalAdd(presupuesto.id, 'pagos')"><i class='bx bx-plus-circle bx-tada bx-rotate-90 mx-1' ></i>{{formatoMoneda(presupuesto.pagos)}}</button>
+                                    {{formatoMoneda(presupuesto.pagos)}}
                                 </td>
                                 <td rowspan="0" v-if="index == 0">
                                     <p v-for="producto in proyecto.productos">
                                         {{ producto.meta_producto.codigo }}
                                     </p>
-                                </td>
-                                <td rowspan="0" v-if="index == 0">
-                                    <button class="btn btn-sm btn-primary bnt-sm text-nowrap" @click="openModalGeneral(proyecto.id)"><i class='bx bxs-edit-alt'></i> Gestionar</button>
                                 </td>
                             </tr>
                             <tr v-else>
@@ -137,9 +128,6 @@
                                     <p v-for="producto in proyecto.productos">
                                         {{ producto.meta_producto.codigo }}
                                     </p>
-                                </td>
-                                <td rowspan="0">
-                                    <button class="col-12 btn btn-sm btn-primary mb-1 text-nowrap" @click="openModalGeneral(proyecto.id)"><i class='bx bxs-edit-alt'></i> Gestionar</button>
                                 </td>
                             </tr>
                             <tr class="table-primary">

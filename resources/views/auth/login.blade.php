@@ -12,6 +12,9 @@
   <div class="authentication-wrapper authentication-basic container-p-y">
     <div class="authentication-inner">
       <!-- Register -->
+      <div class="my-3">
+        <a href="{{route('plan-operativo')}}" type="button" class="btn btn-outline-primary">Ver Plan Operativo Anual</a>
+      </div>
       <div class="card">
         <div class="card-body">
           <!-- Logo -->

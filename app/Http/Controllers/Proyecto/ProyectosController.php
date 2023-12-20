@@ -21,16 +21,16 @@ class ProyectosController extends Controller
         return view('proyectos.index', compact('periodo_activo'));
     }
 
-    public function get()
+    public function get(Request $request)
     {
-        $proyectos = Proyecto::with('presupuestos', 'productos.meta_producto')->get();
+        $proyectos = Proyecto::where([['hecho_id', $request->hecho], ['politica_id', $request->politica], ['programa_id', $request->programa], ['vigencia', $request->año]])->with('hecho', 'politica', 'programa', 'presupuestos', 'productos.meta_producto')->get();
 
         return response()->json(['status' => true, 'proyectos' => $proyectos]);
     }
 
     public function getAll($id)
     {
-        $proyecto = Proyecto::with('presupuestos', 'productos.meta_producto', 'presupuestos.movimiento_financieros')->where('id', $id)->first();
+        $proyecto = Proyecto::with('hecho', 'politica', 'programa', 'presupuestos', 'productos.meta_producto', 'presupuestos.movimiento_financieros')->where('id', $id)->first();
 
         return response()->json(['proyecto' => $proyecto]);
     }

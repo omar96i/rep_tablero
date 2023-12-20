@@ -112,7 +112,7 @@ class MetaDeProducto extends Model
             $prop = 'meta_year_' . $año;
 
             if ($meta->indicador_id == 1 ) {
-                if ($meta_programada > 0) {
+                if ($meta->{$prop} > 0) {
                     $meta_programada += $meta->{$prop} / $numero_metas_programadas;
                 }else {
                     $meta_programada = 0;

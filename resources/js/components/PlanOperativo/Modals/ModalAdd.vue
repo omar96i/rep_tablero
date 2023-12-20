@@ -124,7 +124,7 @@ export default {
                     // console.log(res)
                     if (res.data.status) {
                         this.$swalMini('success', `${this.column} actualizada con exito!`);
-                        this.$parent.closeModal('modalAdd')
+                        this.$parent.closeModal('modalAdd', true)
                     }
                 }).catch(error=>{
                     console.log(error.response)

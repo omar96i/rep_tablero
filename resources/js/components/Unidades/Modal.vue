@@ -37,10 +37,8 @@
     export default {
         data(){
             return{
-                data:{},
                 unidad:{
                     nombre:""
-
                 },
                 tipo: '',
                 loading: false,

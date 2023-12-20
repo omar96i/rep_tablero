@@ -55,7 +55,7 @@
                             <td>Acumulado</td>
                             <td>{{acum_meta.meta_programada}}</td>
                             <td>{{acum_meta.meta_alcanzada}}</td>
-                            <td>{{acum_meta.porcentaje_avance_general}}</td>
+                            <td>{{acum_meta.porcentaje_avance_general}} %</td>
                         </tr>
                     </tbody>
                 </table>
@@ -104,7 +104,13 @@ export default {
             }, 300);
         },
         calcularAcumulado(){
-            this.acum_meta.meta_programada = this.meta.programacion_meta.reduce((acumulador, objeto) => acumulador + objeto.meta_programada, 0);
+            if (this.meta.indicador_id == 1) {
+                let valoresMetaProgramada = this.meta.programacion_meta.map(objeto => objeto.meta_programada);
+                let maximoMetaProgramada = Math.max(...valoresMetaProgramada);
+                this.acum_meta.meta_programada = maximoMetaProgramada;
+            }else{
+                this.acum_meta.meta_programada = this.meta.programacion_meta.reduce((acumulador, objeto) => acumulador + objeto.meta_programada, 0);
+            }
             this.acum_meta.meta_alcanzada = this.meta.programacion_meta.reduce((acumulador, objeto) => acumulador + objeto.meta_alcanzada, 0);
             this.acum_meta.porcentaje_avance_general = this.meta.programacion_meta[0].porcentaje_avance_general;
         },

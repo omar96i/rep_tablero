@@ -171,7 +171,8 @@ Route::middleware(['auth'])->group(function () {
 
     //plan operativo anual
     Route::resource('proyectos', ProyectosController::class);
-    Route::get('/proyectos-get', [ProyectosController::class, 'get'])->name('proyectos.get');
+    // Route::get('/proyectos-get', [ProyectosController::class, 'get'])->name('proyectos.get');
+    Route::post('/proyectos-get', [ProyectosController::class, 'get'])->name('proyectos.get');
     Route::get('/proyectos-get-all/{id}', [ProyectosController::class, 'getAll'])->name('proyectos.get.all');
 
     Route::resource('proyectos-productos', ProyectoProductosController::class);
@@ -182,3 +183,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('proyectos-movimientos', ProyectoMovimientosFinancierosController::class);
 });
+
+Route::get('/plan-operativo', function () {
+    $periodo_activo = Periodo::getPeriodoActivo(1);
+    return view('proyectos.index_public',  compact('periodo_activo'));
+})->name('plan-operativo');
+
+Route::get('/hechos-get', [HechoController::class, 'get'])->name('hechos.get');
+Route::get('/politicas-get', [PoliticaController::class, 'get'])->name('politicas.get');
+Route::get('/programas-get', [ProgramaController::class, 'get'])->name('programas.get');
+Route::post('/proyectos-get', [ProyectosController::class, 'get'])->name('proyectos.get');
+
+
+
+
