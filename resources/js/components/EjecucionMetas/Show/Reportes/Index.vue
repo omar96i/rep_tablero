@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <div class="d-flex justify-content-between mb-2">
+            <div class="d-flex justify-content-between mb-2" v-if="state!='public'">
                 <h5 class="my-auto">Reportes realizados</h5>
                 <button class="btn btn-primary" @click="openModal(null)">Nuevo reporte</button>
             </div>
@@ -21,17 +21,17 @@
                             <td>{{ reporte.meta_alcanzada }}</td>
                             <td :style="{ 'white-space': 'pre-line' }">{{ reporte.actividad }}</td>
                             <td class="text-center d-flex">
-                                <button type="button" class="btn btn-primary btn-sm mx-1" @click="openModal(reporte)"><i class='bx bxs-edit' ></i> Editar</button>
+                                <button type="button" class="btn btn-primary btn-sm mx-1" @click="openModal(reporte)" v-if="state != 'public'"><i class='bx bxs-edit' ></i> Editar</button>
                                 <button type="button" class="btn btn-info btn-sm mx-1" @click="openModalEvidencias(reporte)"><i class='bx bx-show-alt'></i> Evidencias</button>
-                                <button class="btn btn-danger btn-circle btn-sm"  @click="deleteData(reporte.id)"><i class='bx bxs-trash' ></i></button>
+                                <button class="btn btn-danger btn-circle btn-sm"  @click="deleteData(reporte.id)" v-if="state != 'public'"><i class='bx bxs-trash' ></i></button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <modal-reporte v-if="modal_reporte" :meta="meta" :data_reporte="reporte"></modal-reporte>
-        <modal-evidencias v-if="modal_evidencias" :reporte_id="reporte.id">></modal-evidencias>
+        <modal-reporte v-if="modal_reporte" :meta="meta" :data_reporte="reporte" :state="state"></modal-reporte>
+        <modal-evidencias v-if="modal_evidencias" :reporte_id="reporte.id" :state="state"></modal-evidencias>
     </div>
 </template>
 
@@ -39,7 +39,7 @@
 import ModalReporte from './ModalReporte.vue';
 import ModalEvidencias from "./ModalEvidencias.vue"
 export default {
-    props: ['meta'],
+    props: ['meta', 'state'],
     components: {
         ModalReporte,
         ModalEvidencias

@@ -28,7 +28,7 @@ $containerNav = 'container-fluid';
                 </div>
                 <div class="col-md-12">
                     <div class="card-body" id="app">
-                        <ejecucion-meta-show :meta="{{$meta}}"></ejecucion-meta-show>
+                        <ejecucion-meta-show :meta="{{$meta}}" state="admin"></ejecucion-meta-show>
                     </div>
                 </div>
             </div>

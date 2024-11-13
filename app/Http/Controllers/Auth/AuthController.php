@@ -27,7 +27,6 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            // La autenticación ha sido exitosa
             return redirect()->intended('/home'); // Cambia '/dashboard' a la ruta a la que deseas redirigir después del inicio de sesión exitoso
         }
 

@@ -21,8 +21,17 @@ class ReportesController extends Controller
         $meta->load('indicador', 'proyectos.proyecto', 'hoja_de_vida');
         // listar los 4 reportes de cada año
         $meta->programacion_meta = $meta->avanceFisico();
-    
+
         return view('ejecucion_metas.show', ['meta' => $meta]);
+    }
+
+    public function indesPublic(MetaDeProducto $meta)
+    {
+        $meta->load('indicador', 'proyectos.proyecto', 'hoja_de_vida');
+        // listar los 4 reportes de cada año
+        $meta->programacion_meta = $meta->avanceFisico();
+
+        return view('ejecucion_metas.show_public', ['meta' => $meta]);
     }
 
     public function indexData(MetaDeProducto $meta)
@@ -30,7 +39,7 @@ class ReportesController extends Controller
         $meta->load('indicador', 'proyectos.proyecto', 'hoja_de_vida');
         // listar los 4 reportes de cada año
         $meta->programacion_meta = $meta->avanceFisico();
-    
+
         return response()->json(['meta' => $meta]);
     }
 

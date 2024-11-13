@@ -32,7 +32,7 @@
                         <div class="mb-3">
                             <label for="periocidad" class="form-label">Periocidad:</label>
                             <select class="form-select" name="periocidad" id="periocidad"
-                                v-model="hoja_vida.periocidad">
+                                v-model="hoja_vida.periocidad" :disabled="state == 'public'">
                                 <option value="" selected disabled>Selecciona..</option>
                                 <option value="mensual">Mensual</option>
                                 <option value="bimestral">Bimestral</option>
@@ -46,22 +46,22 @@
                 <div class="row mb-3">
                     <div class="col-12 col-sm-6">
                         <label for="fuente" class="form-label">Fuente:</label>
-                        <input v-model="hoja_vida.fuente" type="text" class="form-control" id="fuente">
+                        <input v-model="hoja_vida.fuente" type="text" class="form-control" id="fuente" :disabled="state == 'public'">
                     </div>
                     <div class="col-12 col-sm-6">
                         <label for="periodo_fuente" class="form-label">Perido de Fuente:</label>
-                        <input v-model="hoja_vida.periodo_fuente" type="text" class="form-control" id="periodo_fuente">
+                        <input v-model="hoja_vida.periodo_fuente" type="text" class="form-control" id="periodo_fuente" :disabled="state == 'public'">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 col-sm-6">
                         <label for="definiciones" class="form-label">Definiciones:</label>
-                        <textarea rows="3" v-model="hoja_vida.definiciones" type="text" class="form-control"
+                        <textarea rows="3" v-model="hoja_vida.definiciones" type="text" class="form-control" :disabled="state == 'public'"
                             id="definiciones"></textarea>
                     </div>
                     <div class="col-12 col-sm-6">
                         <label for="valoracion" class="form-label">Valoracion:</label>
-                        <select class="form-select" name="valoracion" id="valoracion"
+                        <select class="form-select" name="valoracion" id="valoracion" :disabled="state == 'public'"
                             v-model="hoja_vida.valoracion">
                             <option value="" selected disabled>Selecciona..</option>
                             <option value="deseada">Deseada</option>
@@ -74,21 +74,21 @@
                 <div class="row mb-3">
                     <div class="col-12 col-sm-6">
                         <label for="localizacion" class="form-label">Localizacion:</label>
-                        <input v-model="hoja_vida.localizacion" type="text" class="form-control" id="localizacion">
+                        <input v-model="hoja_vida.localizacion" type="text" class="form-control" id="localizacion" :disabled="state == 'public'">
                     </div>
                     <div class="col-12 col-sm-6">
                         <label for="poblacion" class="form-label">Poblacion:</label>
-                        <input v-model="hoja_vida.poblacion" type="text" class="form-control" id="poblacion">
+                        <input v-model="hoja_vida.poblacion" type="text" class="form-control" id="poblacion" :disabled="state == 'public'">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 col-sm-6">
                         <label for="medicion" class="form-label">Medicion:</label>
-                        <input v-model="hoja_vida.medicion" type="text" class="form-control" id="medicion">
+                        <input v-model="hoja_vida.medicion" type="text" class="form-control" id="medicion" :disabled="state == 'public'">
                     </div>
                     <div class="col-12 col-sm-6">
                         <label for="unidad_de_medida" class="form-label">Unidad de medida:</label>
-                        <select class="form-select" name="unidad_de_medida" id="unidad_de_medida"
+                        <select class="form-select" name="unidad_de_medida" id="unidad_de_medida" :disabled="state == 'public'"
                             v-model="hoja_vida.unidad_medida">
                             <option value="" selected disabled>Selecciona..</option>
                             <option v-for="(u_medida, index) in select_unidad_medida" :key="index" :value="u_medida.nombre">
@@ -99,22 +99,22 @@
                 <div class="row mb-3">
                     <div class="col-12 col-sm-6">
                         <label for="formula" class="form-label">Formula:</label>
-                        <input v-model="hoja_vida.formula" type="text" class="form-control" id="formula">
+                        <input v-model="hoja_vida.formula" type="text" class="form-control" id="formula" :disabled="state == 'public'">
                     </div>
                     <div class="col-12 col-sm-6">
                         <label for="variables" class="form-label">Variables:</label>
-                        <input v-model="hoja_vida.variables" type="text" class="form-control" id="variables">
+                        <input v-model="hoja_vida.variables" type="text" class="form-control" id="variables" :disabled="state == 'public'">
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-12">
                         <label for="observaciones" class="form-label">Observaciones:</label>
-                        <textarea rows="3" v-model="hoja_vida.observaciones" type="text" class="form-control"
+                        <textarea rows="3" v-model="hoja_vida.observaciones" type="text" class="form-control" :disabled="state == 'public'"
                             id="observaciones"></textarea>
                     </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center" v-if="state != 'public'">
                     <button type="submit" class="btn btn-primary">Guardar hoja de vida</button>
                 </div>
             </div>
@@ -124,7 +124,7 @@
 
 <script>
 export default {
-    props: ['meta'],
+    props: ['meta', 'state'],
     data() {
         return {
             hoja_vida: {

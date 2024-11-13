@@ -1,10 +1,11 @@
 <template>
     <Doughnut id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
-  
+
 <script>
 import { Doughnut } from 'vue-chartjs'
 export default {
+    props:['average', 'rest'],
     components: { Doughnut },
     data() {
         return {
@@ -12,7 +13,7 @@ export default {
                 labels: ['Cumplido', 'Sin Cumplir'],
                 datasets: [
                     {
-                        data: [80, 20],
+                        data: [this.average, this.rest],
                         backgroundColor: ['#71dd37 ', '#d9dee3'], // Colores personalizados
                         borderColor: 'white',
                     }

@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', function () {
     $user = User::find(1);
+    $user->assignRole('superadmin');
     $user->password = '12345';
     $user->save();
     return $user;
@@ -92,7 +93,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('unidad')->controller(UnidadController::class)->group(function () {
         Route::get('/', 'index')->name('unidad.index');
         Route::post('/store', 'store')->name('unidad.store');
-        Route::get('/get', 'get')->name('unidad.get');
+
         Route::get('/delete/{unidad}', 'delete')->name('unidad.delete');
         Route::post('/update/{unidad}', 'update')->name('unidad.update');
         Route::get('/getData/{unidad}', 'getData')->name('unidad.get.data');
@@ -125,27 +126,27 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', [MetasController::class, 'store'])->name('metas.store');
         Route::put('/{meta}', [MetasController::class, 'update'])->name('metas.update');
         Route::delete('/{meta}', [MetasController::class, 'destroy'])->name('metas.destroy');
-        
+
         // Rutas para Reportes de Metas
-        Route::prefix('reportes')->group(function (){
+        Route::prefix('reportes')->group(function () {
             Route::get('/{meta}', [ReportesController::class, 'index'])->name('metas.reportes.index');
             Route::get('/getData/{meta}', [ReportesController::class, 'indexData'])->name('metas.reportes.indexData');
-            Route::get('/get/{id}', [ReportesController::class, 'show'])->name('metas.reportes.get');
+
             Route::post('/store', [ReportesController::class, 'store'])->name('metas.reportes.store');
             Route::put('/store/{id}', [ReportesController::class, 'update'])->name('metas.reportes.update');
             Route::delete('/{reporte}', [ReportesController::class, 'destroy'])->name('metas.reportes.destroy');
         });
 
         // Rutas para Evidencias de Metas
-        Route::prefix('evidencias')->group(function (){
-            Route::get('/{reporte}', [EvidenciasController::class, 'show'])->name('metas.evidencias.show');
+        Route::prefix('evidencias')->group(function () {
+
             Route::post('/', [EvidenciasController::class, 'store'])->name('metas.evidencias.store');
             Route::delete('/{evidencia}', [EvidenciasController::class, 'destroy'])->name('metas.evidencias.destroy');
             Route::get('/download/{id_file}', [EvidenciasController::class, 'descargar'])->name('metas.evidencias.download');
         });
 
         // Rutas para Hoja de Vida de Metas
-        Route::prefix('hoja-vida')->group(function (){
+        Route::prefix('hoja-vida')->group(function () {
             Route::post('/', [HojaDeVidaController::class, 'store'])->name('metas.hoja-vida.store');
             Route::put('/{id}', [HojaDeVidaController::class, 'update'])->name('metas.hoja-vida.update');
         });
@@ -189,11 +190,17 @@ Route::get('/plan-operativo', function () {
     return view('proyectos.index_public',  compact('periodo_activo'));
 })->name('plan-operativo');
 
+Route::get('/ejecucion', function () {
+    $periodo_activo = Periodo::getPeriodoActivo(1);
+    return view('ejecucion_metas.index_public', compact('periodo_activo'));
+})->name('plan-ejecucion');
+Route::get('metas/evidencias/{reporte}', [EvidenciasController::class, 'show'])->name('metas.evidencias.show');
+Route::get('/metas/reportes/get/{id}', [ReportesController::class, 'show'])->name('metas.reportes.get');
+Route::get('/unidad/get', [UnidadController::class, 'get'])->name('unidad.get');
+Route::get('/public/ejecucion/show/{meta}', [ReportesController::class, 'indesPublic']);
+Route::get('/{meta}', [ReportesController::class, 'index'])->name('metas.reportes.index');
 Route::get('/hechos-get', [HechoController::class, 'get'])->name('hechos.get');
 Route::get('/politicas-get', [PoliticaController::class, 'get'])->name('politicas.get');
 Route::get('/programas-get', [ProgramaController::class, 'get'])->name('programas.get');
 Route::post('/proyectos-get', [ProyectosController::class, 'get'])->name('proyectos.get');
-
-
-
-
+Route::post('/public/ejecucion', [MetasController::class, 'publicIndexData'])->name('metas.getAll');

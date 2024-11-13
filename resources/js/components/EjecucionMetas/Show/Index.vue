@@ -18,16 +18,16 @@
             <div class="tab-content shadow-lg">
                 <div class="tab-pane fade show active" id="navs-info-general" role="tabpanel">
                     <!-- componente de informacion general -->
-                    <info-general :meta="data_meta"></info-general>
+                    <info-general :meta="data_meta" :state="state"></info-general>
 
                 </div>
                 <div class="tab-pane fade" id="navs-crear-evidencia" role="tabpanel">
                     <!-- componente formulario reportes -->
-                    <reportes :meta="data_meta"></reportes>
+                    <reportes :meta="data_meta" :state="state"></reportes>
                 </div>
                 <div class="tab-pane fade" id="navs-hoja-vida" role="tabpanel">
                     <!-- componente formulario hojas de vida -->
-                    <hoja-vida :meta="data_meta"></hoja-vida>
+                    <hoja-vida :meta="data_meta" :state="state"></hoja-vida>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@ import InfoGeneral from './InfoGeneral/Index.vue'
 import Reportes from './Reportes/Index.vue'
 import HojaVida from './HojaDeVida/Index.vue'
 export default {
-    props: ['meta'],
+    props: ['meta', 'state'],
     components: {
         InfoGeneral,
         Reportes,

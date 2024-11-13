@@ -30,7 +30,7 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12" v-if="state != 'public'">
                             <h5>Subir Archivos</h5>
                             <form @submit.prevent="submitForm" enctype="multipart/form-data" class="row">
                                 <div class="col-6 mb-3">
@@ -68,7 +68,7 @@
                                                 <i :class="evidencia.tipo == 'documento' ? 'bx bx-file-blank me-2' : evidencia.tipo == 'imagen' ? 'bx bx-images me-2' : 'bx bxs-videos me-2'"></i>
                                                 {{ evidencia.route_name }}
                                             </div>
-                                            <div>
+                                            <div v-if="state != 'public'">
                                                 <button class="btn btn-danger btn-sm" type="button" @click="deleteEvidencia(evidencia.id)"><i class='bx bx-x-circle'></i></button>
                                             </div>
                                         </button>
@@ -86,7 +86,7 @@
 
 <script>
 export default {
-    props: ['reporte_id'],
+    props: ['reporte_id', 'state'],
     data() {
         return {
             formData: {

@@ -64,13 +64,13 @@
                 <button class="btn btn-primary" @click="openFicha()">Ver ficha de la meta</button>
             </div>
         </div>
-        <modal-ficha v-if="modal_ficha" :meta="meta"></modal-ficha>
+        <modal-ficha v-if="modal_ficha" :meta="meta" :acum_meta="acum_meta.porcentaje_avance_general" :state="state"></modal-ficha>
     </div>
 </template>
 <script>
 import ModalFicha from './ModalFicha.vue'
 export default {
-    props: ['meta'],
+    props: ['meta', 'state'],
     components:{
         ModalFicha
     },

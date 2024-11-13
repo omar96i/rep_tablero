@@ -20,6 +20,7 @@ import EstrategiasIndex from './components/Programacion/Estrategias/Index.vue';
 import ProgramasIndex from './components/Programacion/Programas/Index.vue';
 import MetasIndex from './components/Programacion/Metas/Index.vue';
 import EjecucionMetaIndex from './components/EjecucionMetas/Index.vue'
+import EjecucionMetaIndexPublic from './components/EjecucionMetas/Public.vue'
 import EjecucionMetaShow from './components/EjecucionMetas/Show/Index.vue'
 
 import PlanOperativo from './components/PlanOperativo/Index.vue';
@@ -45,5 +46,6 @@ app.component('plan-operativo-index', PlanOperativo);
 app.component('plan-operativo-index-public', PlanOperativoPublic);
 app.component('ejecucion-meta-index', EjecucionMetaIndex);
 app.component('ejecucion-meta-show', EjecucionMetaShow);
+app.component('ejecucion-meta-show-public', EjecucionMetaIndexPublic);
 app.component('spinner', Spinner);
 app.mount('#app');

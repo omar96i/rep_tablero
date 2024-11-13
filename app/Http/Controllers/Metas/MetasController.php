@@ -21,27 +21,47 @@ class MetasController extends Controller
         return view('programacion.metas.index', compact('periodo_activo'));
     }
 
-    public function indexEjecucion(){
+    public function indexEjecucion()
+    {
         $periodo_activo = Periodo::getPeriodoActivo(auth()->user()->id);
         return view('ejecucion_metas.index', compact('periodo_activo'));
     }
-    
+
     public function get()
     {
         $metas = MetaDeProducto::with('hecho', 'politica', 'programa', 'periodo', 'indicador')->get();
-    
+
         return response()->json(['metas' => $metas]);
     }
 
     public function indexData(Request $request)
     {
         $metas = MetaDeProducto::with('hecho', 'politica', 'programa', 'periodo')
-                    // ->where('user_id', auth()->user()->id)
-                    ->where('hecho_id', $request->hecho_id)
-                    ->where('politica_id', $request->politica_id)
-                    // ->where('estrategia_id', $request->estrategia_id) modelo estrategias eliminado
-                    ->where('programa_id', $request->programa_id)
-                    ->get();
+            // ->where('user_id', auth()->user()->id)
+            ->where('hecho_id', $request->hecho_id)
+            ->where('politica_id', $request->politica_id)
+            // ->where('estrategia_id', $request->estrategia_id) modelo estrategias eliminado
+            ->where('programa_id', $request->programa_id)
+            ->get();
+        return response()->json(['metas' => $metas]);
+    }
+
+    public function publicIndexData(Request $request)
+    {
+        // Consulta todas las metas con relaciones necesarias
+        $metas = MetaDeProducto::with('hecho', 'politica', 'programa', 'periodo')
+            ->where('hecho_id', $request->hecho_id)
+            ->where('politica_id', $request->politica_id)
+            ->where('programa_id', $request->programa_id)
+            ->get();
+
+        // Iteramos sobre cada meta para agregar los datos de 'avanceFisico'
+        foreach ($metas as $meta) {
+            // Agregamos el resultado de 'avanceFisico' al atributo 'programacion_meta'
+            $meta->programacion_meta = $meta->avanceFisico();
+        }
+
+        // Retornamos la respuesta con las metas actualizadas
         return response()->json(['metas' => $metas]);
     }
 
