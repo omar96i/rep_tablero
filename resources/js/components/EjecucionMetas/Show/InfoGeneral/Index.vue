@@ -41,7 +41,7 @@
                             <th>Año</th>
                             <th>Meta Programada</th>
                             <th>Meta Alcanzada</th>
-                            <th>Porcentaje de ejcución</th>
+                            <th>Porcentaje de ejecución</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,7 +53,7 @@
                         </tr>
                         <tr>
                             <td>Acumulado</td>
-                            <td>{{acum_meta.meta_programada}}</td>
+                            <td>{{(acum_meta.meta_programada > 0) ? '1' : '0'}}</td>
                             <td>{{acum_meta.meta_alcanzada}}</td>
                             <td>{{acum_meta.porcentaje_avance_general}} %</td>
                         </tr>

@@ -1,11 +1,20 @@
 <template>
     <div class="col-12">
         <div class="my-1">
-            <h5>Periodo establecido: <b> {{ periodo.nombre }} </b> <br> desde: <b> {{ periodo.fecha_ini }} </b> hasta:
+            <h5>Periodo establecido: <b> {{ periodo.nombre }} </b> <br>
+                desde: <b> {{ periodo.fecha_ini }} </b> hasta:
                 <b> {{ periodo.fecha_fin }} </b>
             </h5>
         </div>
         <form @submit.prevent="getData()" class="col-12 row">
+            <div class="col">
+                <label>Año:</label>
+                <select class="form-select" name="" v-model="consulta.year" @change="clearSelect('hecho_id')" required>
+                    <option value="" selected disabled>Seleccionar...</option>
+                    <option v-for="(item, index) in years" :key="index" :value="item">{{ item }}
+                    </option>
+                </select>
+            </div>
             <div class="col">
                 <label>Hecho:</label>
                 <select class="form-select" name="" v-model="consulta.hecho_id" @change="clearSelect('hecho_id')"
@@ -51,9 +60,16 @@
         <hr>
         <div class="col-12 my-3">
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-3 mb-3" v-for="(meta, index) in metas" :key="index">
+                <!-- Mostrar mensaje si no hay datos -->
+                <div class="col-12 text-center" v-if="metas.length === 0">
+                    <p>No hay datos disponibles dados los filtros seleccionados</p>
+                </div>
+
+                <!-- Renderizar botones si hay datos -->
+                <div class="col-12 col-sm-6 col-md-3 mb-3" v-for="(meta, index) in metas" :key="index"
+                    v-if="metas.length > 0">
                     <button type="button" class="btn w-100"
-                        :style="{ backgroundColor: getButtonColor(meta.average), color: '#fff' }"
+                        :style="{ backgroundColor: getButtonColor(meta.average) }"
                         @click="showMeta(meta.id)">
                         {{ meta.codigo }}
                     </button>
@@ -64,6 +80,7 @@
     </div>
 </template>
 <script>
+const currentYear = new Date().getFullYear();
 export default {
     props: ['periodo'],
     data() {
@@ -71,16 +88,14 @@ export default {
             spinner: false,
             select_hechos: [],
             select_politicas: [],
-            // select_estrategias: [],
             select_programas: [],
-
+            years: Array.from({ length: currentYear - 2000 + 1 }, (_, i) => 2000 + i), // Genera el array de años
             consulta: {
                 hecho_id: '',
                 politica_id: '',
-                // estrategia_id: '',
                 programa_id: '',
+                year: '2021'
             },
-
             metas: [],
         }
     },

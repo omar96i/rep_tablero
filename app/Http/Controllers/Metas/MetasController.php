@@ -53,6 +53,7 @@ class MetasController extends Controller
             ->where('hecho_id', $request->hecho_id)
             ->where('politica_id', $request->politica_id)
             ->where('programa_id', $request->programa_id)
+            ->where('year', $request->year)
             ->get();
 
         // Iteramos sobre cada meta para agregar los datos de 'avanceFisico'

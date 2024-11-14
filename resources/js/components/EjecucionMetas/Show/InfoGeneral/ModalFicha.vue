@@ -33,7 +33,7 @@
                                                     <h5 class="card-header text-white bg-primary p-2 text-center">Avance
                                                         Físico Cuatrenio</h5>
                                                     <div class="card-body border border-secondary rounded-bottom">
-                                                        <DoughnutChart :average="acum_meta" :rest="rest"/>
+                                                        <DoughnutChart :average="acum_meta" :rest="rest" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,7 +72,8 @@
                                                 <h5 class="card-header text-white bg-primary p-2 text-center">Avance
                                                     Financiero</h5>
                                                 <div class="card-body border border-secondary rounded-bottom">
-
+                                                    <Bar :data="chartData" :options="chartOptions"
+                                                        style="height: 600px; width: 100%;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -220,14 +221,24 @@
         </div>
     </div>
 </template>
-
+<style scoped>
+.chart-container {
+    width: 100%;
+    height: 800px;
+}
+</style>
 <script>
 import DoughnutChart from './charts/MediaDona.vue';
+import { Bar } from 'vue-chartjs';
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 export default {
     props: ['meta', 'acum_meta', 'state'],
     components: {
         DoughnutChart,
+        Bar
     },
     data() {
         return {
@@ -236,15 +247,124 @@ export default {
             reportes: [],
             average: 0,
             rest: 0,
+            chartData: {
+                labels: [], // Inicialmente vacío, lo llenaremos con los años (vigencia)
+                datasets: [
+                    {
+                        label: 'Valor Definitivo',
+                        backgroundColor: '#4472c4',
+                        data: [],
+                    },
+                    {
+                        label: 'Valor Disponibilidad',
+                        backgroundColor: '#00b050',
+                        data: [],
+                    },
+                    {
+                        label: 'Valor Registros',
+                        backgroundColor: '#ffc000',
+                        data: [],
+                    },
+                    {
+                        label: 'Valor Pagos',
+                        backgroundColor: '#c00000',
+                        data: [],
+                    },
+                ],
+            },
+            // Opciones del gráfico
+            chartOptions: {
+                indexAxis: 'y', // Gráfico horizontal
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: (value) => `${(value / 1_000_000).toFixed(0)} M`, // Mostrar en millones
+                        },
+                    },
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    datalabels: {
+                        color: 'white',
+                        formatter: (value) => {
+                            // Formato de moneda: ejemplo en COP (Colombian Peso)
+                            return `${value.toLocaleString('es-CO', { style: 'currency', currency: 'COP' })}`;
+                        },
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (tooltipItem) => {
+                                return `${tooltipItem.dataset.label}: ${tooltipItem.raw.toLocaleString()} COP`;
+                            },
+                        },
+                    },
+                },
+            },
         };
     },
     created() {
 
         this.rest = 100 - this.acum_meta; // Calculamos el restante
-
+        this.setChartData();
         this.getReportes(this.meta.id)
     },
     methods: {
+        setChartData() {
+            // Inicializamos arrays vacíos
+            const labels = [];
+            const valorDefinitivo = [];
+            const valorDisponibilidad = [];
+            const valorRegistros = [];
+            const valorPagos = [];
+
+            // Variables para almacenar los acumulados
+            let acumulativoDefinitivo = 0;
+            let acumulativoDisponibilidad = 0;
+            let acumulativoRegistros = 0;
+            let acumulativoPagos = 0;
+
+            // Recorremos el array `meta.proyectos` para obtener los datos
+            this.meta.proyectos.forEach((proyecto) => {
+                // Extraemos la vigencia y los valores
+                const vigencia = proyecto.proyecto.vigencia;
+                const definitivo = proyecto.valor_definitivo || 0;
+                const disponibilidad = proyecto.valor_disponibilidad || 0;
+                const registros = proyecto.valor_registros || 0;
+                const pagos = proyecto.valor_pagos || 0;
+
+                // Añadimos los valores a los arrays correspondientes
+                labels.push(vigencia);
+                valorDefinitivo.push(definitivo);
+                valorDisponibilidad.push(disponibilidad);
+                valorRegistros.push(registros);
+                valorPagos.push(pagos);
+
+                // Sumamos los valores para obtener el acumulado
+                acumulativoDefinitivo += definitivo;
+                acumulativoDisponibilidad += disponibilidad;
+                acumulativoRegistros += registros;
+                acumulativoPagos += pagos;
+            });
+
+            // Añadimos la fila de "Acumulativo" al final
+            labels.push("Acumulativo");
+            valorDefinitivo.push(acumulativoDefinitivo);
+            valorDisponibilidad.push(acumulativoDisponibilidad);
+            valorRegistros.push(acumulativoRegistros);
+            valorPagos.push(acumulativoPagos);
+
+            // Actualizamos `chartData` con los nuevos valores
+            this.chartData.labels = labels;
+            this.chartData.datasets[0].data = valorDefinitivo;
+            this.chartData.datasets[1].data = valorDisponibilidad;
+            this.chartData.datasets[2].data = valorRegistros;
+            this.chartData.datasets[3].data = valorPagos;
+        },
         getReportes() {
             axios.get(`/metas/reportes/get/${this.meta.id}`)
                 .then(res => {
